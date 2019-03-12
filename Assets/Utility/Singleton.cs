@@ -14,8 +14,9 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 
     static MonoBehaviour instance;
 
-    void Awake()
+    protected virtual void Awake()
     {
+        Debug.Log(typeof(T).ToString());
         instance = this; 
     }
 }
