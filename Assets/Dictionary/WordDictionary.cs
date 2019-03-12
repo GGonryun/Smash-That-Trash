@@ -11,7 +11,7 @@ public class WordDictionary : IEnumerable<KeyValuePair<string, string>>
     {
         get
         {
-            return dictionary[word]; 
+            return dictionary[word];
         }
     }
 
@@ -31,14 +31,18 @@ public class WordDictionary : IEnumerable<KeyValuePair<string, string>>
     {
         string[] lines = TextLoader.LoadLines("dictionary");
         int i = 0;
-        foreach(string line in lines)
+        foreach (string line in lines)
         {
             if (frequency >= Random.Range(0f, 1f))
             {
                 string word, definition;
                 ParseWordDefPair(line, out word, out definition);
-                dictionary.Add(word, definition);
-                i++;
+                if (OnlyContainsLetters(word))
+                {
+                    dictionary.Add(word, definition);
+                    i++;
+
+                }
             }
 
             if (i > maximumWords)
@@ -46,6 +50,11 @@ public class WordDictionary : IEnumerable<KeyValuePair<string, string>>
                 break;
             }
         }
+    }
+
+    bool OnlyContainsLetters(string input)
+    {
+        return System.Text.RegularExpressions.Regex.IsMatch(input, @"^[a-zA-Z]+$");
     }
 
     void ParseWordDefPair(string line, out string word, out string definition)
@@ -57,7 +66,7 @@ public class WordDictionary : IEnumerable<KeyValuePair<string, string>>
 
     IEnumerator<KeyValuePair<string, string>> IEnumerable<KeyValuePair<string, string>>.GetEnumerator()
     {
-        foreach(var entry in dictionary)
+        foreach (var entry in dictionary)
         {
             yield return entry;
         }
