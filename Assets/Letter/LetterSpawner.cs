@@ -14,17 +14,18 @@ public class LetterSpawner : MonoBehaviour
         letters = new List<Letter>();
     }
 
-    public void CreateLetter(KeyCode key)
+    public Letter CreateLetter(KeyCode key)
     {
-        CreateLetter(key.ToString()[0]);
+        return CreateLetter(key.ToString()[0]);
     }
 
-    public void CreateLetter(char key)
+    public Letter CreateLetter(char key)
     {
         Letter letter = letterFactory.Get();
         letter.Initialize(parent, key);
         letters.Add(letter);
         letter.gameObject.name = key.ToString();
+        return letter;
     }
 
     public void ClearWord()
