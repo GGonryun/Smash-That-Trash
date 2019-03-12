@@ -7,9 +7,10 @@ public delegate void LetterReceivedEventHandler(object sender, LetterReceivedEve
 
 public class LetterReceivedEventArgs : System.EventArgs
 {
+    public bool IsSubmission { get; private set; }
     public string Word { get; private set; }
 
-    public LetterReceivedEventArgs(List<KeyCode> letters)
+    public LetterReceivedEventArgs(List<KeyCode> letters, bool isSubmission = false)
     {
         StringBuilder builder = new StringBuilder(letters.Count);
         foreach(KeyCode letter in letters)
@@ -17,6 +18,8 @@ public class LetterReceivedEventArgs : System.EventArgs
             builder.Append(letter);
         }
         Word = builder.ToString();
+
+        IsSubmission = isSubmission;
     }
 }
 
@@ -38,7 +41,17 @@ public class WordBuilder : Singleton<WordBuilder>
 
     public void LogKeyPress(object sender, KeyPressedEventArgs e)
     {
-        keysPressed.Add(e.PressedKey);
-        OnLetterReceived(new LetterReceivedEventArgs(keysPressed));
+        KeyCode key = e.PressedKey;
+
+        if(key != KeyCode.Space)
+        {
+            OnLetterReceived(new LetterReceivedEventArgs(keysPressed, true));
+            keysPressed.Clear();
+        }
+        else
+        {
+            keysPressed.Add(e.PressedKey);
+            OnLetterReceived(new LetterReceivedEventArgs(keysPressed));
+        }
     }
 }

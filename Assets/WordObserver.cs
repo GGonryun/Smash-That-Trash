@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class WordObserver : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        WordBuilder.Instance.LetterReceived += CheckWord;
     }
 
-    // Update is called once per frame
-    void Update()
+    void CheckWord(object sender, LetterReceivedEventArgs e)
     {
-        
+        Debug.Log(e.Word);
     }
+    
 }
