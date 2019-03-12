@@ -18,7 +18,7 @@ public class Keyboard : Singleton<Keyboard>
 {
     public KeyPressedEventHandler KeyPressed;
 
-    [SerializeField] List<KeyCode> keys;
+    [SerializeField] List<KeyCode> keys = new List<KeyCode>();
 
     void OnKeyPressed(KeyPressedEventArgs e)
     {
