@@ -21,7 +21,6 @@ public class WordDictionary : IEnumerable<KeyValuePair<string, string>>
         PopulateRandomly(frequency, maximumWords);
     }
 
-
     public KeyValuePair<string, string> GetRandom()
     {
         return dictionary.ElementAt(Random.Range(0, dictionary.Count));

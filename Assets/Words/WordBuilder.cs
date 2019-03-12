@@ -6,18 +6,22 @@ public class WordBuilder : Singleton<WordBuilder>
 {
     [SerializeField] LetterSpawner letterSpawner;
     private KeyValuePair<string, string> currentWord;
+    private Word word;
 
-    public void CreateWord(KeyValuePair<string, string> pair)
+    public Word CreateWord(KeyValuePair<string, string> pair)
     {
-        string word = pair.Key;
-        for (int i = 0; i < word.Length; i++)
+        string w = pair.Key;
+        word = new Word();
+        for (int i = 0; i < w.Length; i++)
         {
-            letterSpawner.CreateLetter(word[i]);
+            word.Add(letterSpawner.CreateLetter(w[i]));
         }
+        return word;
     }
 
     public KeyValuePair<string, string> ClearWord()
     {
+        word = null;
         letterSpawner.ClearWord();
         return currentWord;
     }
