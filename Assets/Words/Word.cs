@@ -9,6 +9,13 @@ public class Word
 {
     List<Letter> letters;
 
+    public int Length { get => letters.Count; }
+
+    public Letter this[int i]
+    {
+        get => letters[i];
+    }
+
     public Word()
     {
         letters = new List<Letter>();
@@ -19,9 +26,6 @@ public class Word
         letters.Add(letter);
     }
 
-    public Letter Get(int i)
-    {
-        return letters[i];
-    }
+    
 
 }

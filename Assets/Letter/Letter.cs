@@ -9,6 +9,7 @@ public enum Status { Neutral = 0, Wrong = 1, Correct = 2}
 public class Letter : MonoBehaviour
 {
     TextMeshProUGUI text;
+    char character;
     void Awake()
     {
         text = gameObject.GetComponent<TextMeshProUGUI>();
@@ -20,10 +21,11 @@ public class Letter : MonoBehaviour
         {
             throw new System.Exception("Cannot init a letter that is already active!");
         }
+        character = key;
         this.gameObject.SetActive(true);
         SetType(Status.Neutral);
         this.transform.SetParent(parent, false);
-        text.text = key.ToString();
+        text.text = character.ToString();
     }
 
     public void SetType(Status status)
@@ -40,5 +42,18 @@ public class Letter : MonoBehaviour
                 text.color = Color.white;
                 break;
         }
+    }
+
+    public override string ToString()
+    {
+        return character.ToString();
+    }
+    public static bool AreEqual(Letter a, Letter b)
+    {
+        return a.character.Equals(b.character);
+    }
+    public static bool AreEqual(Letter a, char b)
+    {
+        return a.character.Equals(b);
     }
 }

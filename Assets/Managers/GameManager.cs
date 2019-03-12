@@ -16,16 +16,15 @@ public class NewWordEventArgs : System.EventArgs
 
 public class GameManager : Singleton<GameManager>
 {
-
     public NewWordEventHandler WordCreated;
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
-    [SerializeField] LetterReader reader;
     WordDictionary dictionary;
     Entries entries;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         dictionary = new WordDictionary(frequency, maximumWords);
         entries = new Entries();
     }
@@ -48,7 +47,7 @@ public class GameManager : Singleton<GameManager>
     public void SubmitEntry(object sender, KeyPressedEventArgs e)
     {
         KeyValuePair<string, string> currentWord = WordBuilder.Instance.ClearWord();
-        entries.Add(new Entry(currentWord.Key, currentWord.Value, 0));
+        entries.Add(new Entry(currentWord.Key, currentWord.Value, LetterReader.Instance.Score));
         CreateWord();
     }
 
