@@ -14,9 +14,8 @@ public class KeyPressedEventArgs : System.EventArgs
     }
 }
 
-public class Keyboard : MonoBehaviour
+public class Keyboard : Singleton<Keyboard>
 {
-
     public KeyPressedEventHandler KeyPressed;
 
     [SerializeField] List<KeyCode> keys;
