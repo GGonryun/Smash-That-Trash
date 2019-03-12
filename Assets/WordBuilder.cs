@@ -43,7 +43,7 @@ public class WordBuilder : Singleton<WordBuilder>
     {
         KeyCode key = e.PressedKey;
 
-        if(key != KeyCode.Space)
+        if(key != Keyboard.Instance.TerminationKey)
         {
             OnLetterReceived(new LetterReceivedEventArgs(keysPressed, true));
             keysPressed.Clear();

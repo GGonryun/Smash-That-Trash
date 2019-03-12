@@ -16,10 +16,16 @@ public class KeyPressedEventArgs : System.EventArgs
 
 public class Keyboard : Singleton<Keyboard>
 {
-    public KeyPressedEventHandler KeyPressed;
 
     [SerializeField] List<KeyCode> keys = new List<KeyCode>();
+    [SerializeField] KeyCode terminationKey = KeyCode.Space;
+    
+    /// <summary>
+    /// This key determines which key will be used to terminate a string.
+    /// </summary>
+    public KeyCode TerminationKey { get => terminationKey; }
 
+    public KeyPressedEventHandler KeyPressed;
     void OnKeyPressed(KeyPressedEventArgs e)
     {
         KeyPressed?.Invoke(this, e);
