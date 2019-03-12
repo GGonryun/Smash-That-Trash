@@ -6,7 +6,6 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
-    [SerializeField] WordManager wordManager;
     WordDictionary dictionary;
     Entries entries;
 
@@ -16,21 +15,30 @@ public class GameManager : Singleton<GameManager>
         entries = new Entries();
     }
 
-    void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            CreateWord();
-        }
+        CreateWord();
+    }
+
+    void OnEnable()
+    {
+        Keyboard.Instance.Terminate += SubmitEntry;
+    }
+
+    private void OnDisable()
+    {
+        Keyboard.Instance.Terminate -= SubmitEntry;
+    }
+
+    public void SubmitEntry(object sender, KeyPressedEventArgs e)
+    {
+        KeyValuePair<string, string> currentWord = WordBuilder.Instance.ClearWord();
+        entries.Add(new Entry(currentWord.Key, currentWord.Value, 0));
+        CreateWord();
     }
 
     void CreateWord()
     {
-        wordManager.CreateWord(dictionary.GetRandom());
-    }
-
-    public void SubmitEntry(Entry entry)
-    {
-        entries.Add(entry);
+        WordBuilder.Instance.CreateWord(dictionary.GetRandom());
     }
 }

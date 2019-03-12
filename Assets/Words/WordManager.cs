@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WordManager : MonoBehaviour
+public class WordBuilder : Singleton<WordBuilder>
 {
     [SerializeField] LetterSpawner letterSpawner;
     private KeyValuePair<string, string> currentWord;
@@ -16,9 +16,9 @@ public class WordManager : MonoBehaviour
         }
     }
 
-    public void SubmitWord()
+    public KeyValuePair<string, string> ClearWord()
     {
         letterSpawner.ClearWord();
-        GameManager.Instance.SubmitEntry(new Entry(currentWord.Key, currentWord.Value, 0));
+        return currentWord;
     }
 }
