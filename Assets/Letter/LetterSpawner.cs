@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LetterSpawner : Singleton<LetterSpawner>
+public class LetterSpawner : MonoBehaviour
 {
 
     List<Letter> letters;
@@ -14,15 +14,20 @@ public class LetterSpawner : Singleton<LetterSpawner>
         letters = new List<Letter>();
     }
 
-    void CreateLetter(object sender, KeyPressedEventArgs e)
+    public void CreateLetter(KeyCode key)
     {
-        Letter letter = letterFactory.Get();
-        letter.Initialize(parent, e.PressedKey);
-        letters.Add(letter);
-        letter.gameObject.name = e.PressedKey.ToString();
+        CreateLetter(key.ToString()[0]);
     }
 
-    void ClearWord(object sender, KeyPressedEventArgs e)
+    public void CreateLetter(char key)
+    {
+        Letter letter = letterFactory.Get();
+        letter.Initialize(parent, key);
+        letters.Add(letter);
+        letter.gameObject.name = key.ToString();
+    }
+
+    public void ClearWord()
     {
         int i = letters.Count;
         foreach(var letter in letters)

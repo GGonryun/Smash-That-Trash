@@ -39,8 +39,6 @@ public class Keyboard : Singleton<Keyboard>
         KeyPressed?.Invoke(this, e);
     }
 
-   
-
     void TerminateLetter()
     {
         if (Input.GetKeyDown(terminationKey))

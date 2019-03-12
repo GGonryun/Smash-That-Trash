@@ -12,7 +12,7 @@ public class Letter : MonoBehaviour
         text = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
-    public void Initialize(Transform parent, KeyCode pressedKey)
+    public void Initialize(Transform parent, char key)
     {
         if(this.gameObject.activeInHierarchy)
         {
@@ -21,6 +21,6 @@ public class Letter : MonoBehaviour
 
         this.gameObject.SetActive(true);
         this.transform.SetParent(parent, false);
-        text.text = pressedKey.ToString();
+        text.text = key.ToString();
     }
 }
