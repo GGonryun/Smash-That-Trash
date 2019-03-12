@@ -31,7 +31,7 @@ public class Keyboard : Singleton<Keyboard>
 
     void OnTerminate(KeyPressedEventArgs e)
     {
-        Terminate.Invoke(this, e);
+        Terminate?.Invoke(this, e);
     }
 
     void OnKeyPressed(KeyPressedEventArgs e)
