@@ -14,12 +14,27 @@ public class KeyPressedEventArgs : System.EventArgs
     }
 }
 
-public class KeyboardReader : MonoBehaviour
+public class Keyboard : MonoBehaviour
 {
+
     public KeyPressedEventHandler KeyPressed;
 
-    public void OnKeyPressed(KeyPressedEventArgs e)
+    [SerializeField] List<KeyCode> keys;
+
+    void OnKeyPressed(KeyPressedEventArgs e)
     {
         KeyPressed?.Invoke(this, e);
     }
+
+    void Update()
+    {
+        foreach (KeyCode key in keys)
+        {
+            if(Input.GetKeyDown(key))
+            {
+                OnKeyPressed(new KeyPressedEventArgs(key));
+            }
+        }
+    }
+
 }
