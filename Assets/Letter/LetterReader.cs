@@ -28,7 +28,6 @@ public class LetterReader : Singleton<LetterReader>
         }
 
         Letter letter = word[index];
-        Debug.Log($"Current Letter {letter.ToString()}, Letter Pressed: {e.PressedKey.ToString().ToLower()}");
         if (Letter.AreEqual(letter, e.PressedKey.ToString().ToLower()[0]))
         {
             Score++;

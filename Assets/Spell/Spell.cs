@@ -1,18 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int power = 0;
+    public void SetPower(int power)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.power = power;
     }
 }
