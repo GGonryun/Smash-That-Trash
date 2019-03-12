@@ -11,9 +11,6 @@ public class GameManager : Singleton<GameManager>
     void Awake()
     {
         dictionary = new WordDictionary(frequency, maximumWords);
-        foreach(KeyValuePair<string, string> entry in dictionary)
-        {
-            Debug.Log(entry.Key);
-        }
     }
+
 }
