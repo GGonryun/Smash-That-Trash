@@ -20,7 +20,7 @@ public class LetterReceivedEventArgs : System.EventArgs
     }
 }
 
-public class WordBuilder : MonoBehaviour
+public class WordBuilder : Singleton<WordBuilder>
 {
     public LetterReceivedEventHandler LetterReceived;
     List<KeyCode> keysPressed;
