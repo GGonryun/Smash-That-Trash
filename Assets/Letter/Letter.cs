@@ -1,18 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Letter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    TextMeshProUGUI text;
+    void Awake()
     {
-        
+        text = gameObject.GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Initialize(Transform parent, KeyCode pressedKey)
     {
-        
+        if(this.gameObject.activeInHierarchy)
+        {
+            throw new System.Exception("Cannot init a letter that is already active!");
+        }
+
+        this.gameObject.SetActive(true);
+        this.transform.SetParent(parent, false);
+        text.text = pressedKey.ToString();
     }
 }

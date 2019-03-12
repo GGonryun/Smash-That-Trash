@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fa83c3197120b4d85a80d5b25b46e9, type: 3}
   m_Name: LetterFactory
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
+  template: {fileID: 755701055381584765, guid: 78a97aca2d282f04b8fc8e9e68fab9b7, type: 3}

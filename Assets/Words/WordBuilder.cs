@@ -2,15 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public delegate void LetterReceivedEventHandler(object sender, LetterReceivedEventArgs e);
+public delegate void InputReceivedEventHandler(object sender, InputReceivedEventArgs e);
 
-public class LetterReceivedEventArgs : System.EventArgs
+public class InputReceivedEventArgs : System.EventArgs
 {
     public bool IsSubmission { get; private set; }
     public string Word { get; private set; }
 
-    public LetterReceivedEventArgs(List<KeyCode> letters, bool isSubmission = false)
+    public InputReceivedEventArgs(List<KeyCode> letters, bool isSubmission = false)
     {
         StringBuilder builder = new StringBuilder(letters.Count);
         foreach(KeyCode letter in letters)
@@ -25,34 +26,31 @@ public class LetterReceivedEventArgs : System.EventArgs
 
 public class WordBuilder : Singleton<WordBuilder>
 {
-    public LetterReceivedEventHandler LetterReceived;
+    public InputReceivedEventHandler LetterReceived;
+    
     List<KeyCode> keysPressed;
-    [SerializeField] KeyCode terminationKey = KeyCode.Space;
 
     void Start()
     {
         keysPressed = new List<KeyCode>();
         Keyboard.Instance.KeyPressed += LogKeyPress;
+        Keyboard.Instance.Terminate += TerminateWord;
     }
 
-    void OnLetterReceived(LetterReceivedEventArgs e)
+    void OnInputReceived(InputReceivedEventArgs e)
     {
         LetterReceived?.Invoke(this, e);
     }
 
-    public void LogKeyPress(object sender, KeyPressedEventArgs e)
+    void TerminateWord(object sender, KeyPressedEventArgs e)
     {
-        KeyCode key = e.PressedKey;
+        OnInputReceived(new InputReceivedEventArgs(keysPressed, true));
+        keysPressed.Clear();
+    }
 
-        if(key == terminationKey)
-        {
-            OnLetterReceived(new LetterReceivedEventArgs(keysPressed, true));
-            keysPressed.Clear();
-        }
-        else
-        {
-            keysPressed.Add(e.PressedKey);
-            OnLetterReceived(new LetterReceivedEventArgs(keysPressed));
-        }
+    void LogKeyPress(object sender, KeyPressedEventArgs e)
+    {
+        keysPressed.Add(e.PressedKey);
+        OnInputReceived(new InputReceivedEventArgs(keysPressed, false));
     }
 }

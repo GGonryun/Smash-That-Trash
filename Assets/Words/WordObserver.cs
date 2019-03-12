@@ -10,9 +10,12 @@ public class WordObserver : MonoBehaviour
         WordBuilder.Instance.LetterReceived += CheckWord;
     }
 
-    void CheckWord(object sender, LetterReceivedEventArgs e)
+    void CheckWord(object sender, InputReceivedEventArgs e)
     {
-        Debug.Log(e.Word);
+        if(e.IsSubmission)
+        {
+            Debug.Log(e.Word);
+        }
     }
     
 }

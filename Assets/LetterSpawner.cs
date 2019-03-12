@@ -5,21 +5,34 @@ using UnityEngine;
 public class LetterSpawner : MonoBehaviour
 {
 
-    public LetterFactory letterFactory;
+    List<Letter> letters;
+    [SerializeField] LetterFactory letterFactory;
+    [SerializeField] Transform parent;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        letters = new List<Letter>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        if(Input.GetKeyDown(KeyCode.Backspace))
+        Keyboard.Instance.KeyPressed += CreateLetter;
+        Keyboard.Instance.Terminate += ClearWord;
+    }
+
+    void CreateLetter(object sender, KeyPressedEventArgs e)
+    {
+        Letter letter = letterFactory.Get();
+        letter.Initialize(parent, e.PressedKey);
+        letters.Add(letter);
+    }
+
+    void ClearWord(object sender, KeyPressedEventArgs e)
+    {
+        foreach(var letter in letters)
         {
-            Letter letter = letterFactory.Get();
-            letter.gameObject.SetActive(true);
+            letterFactory.Recycle(letter);
         }
+        letters.Clear();
     }
 }
