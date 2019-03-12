@@ -27,6 +27,7 @@ public class WordBuilder : Singleton<WordBuilder>
 {
     public LetterReceivedEventHandler LetterReceived;
     List<KeyCode> keysPressed;
+    [SerializeField] KeyCode terminationKey = KeyCode.Space;
 
     void Start()
     {
@@ -43,7 +44,7 @@ public class WordBuilder : Singleton<WordBuilder>
     {
         KeyCode key = e.PressedKey;
 
-        if(key != Keyboard.Instance.TerminationKey)
+        if(key == terminationKey)
         {
             OnLetterReceived(new LetterReceivedEventArgs(keysPressed, true));
             keysPressed.Clear();
