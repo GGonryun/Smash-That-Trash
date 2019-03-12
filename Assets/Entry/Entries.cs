@@ -2,18 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entries
+public class Entries : MonoBehaviour
 {
     List<Entry> entries;
 
-    public Entries()
+    void Awake()
     {
         entries = new List<Entry>();
     }
 
-    public void Add(Entry entry)
+    private void OnEnable()
     {
-        entries.Add(entry);
+        GameManager.Instance.WordCompleted += AddEntry;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.WordCompleted -= AddEntry;
+    }
+
+    void AddEntry(object sender, EntryEventArgs e)
+    {
+        entries.Add(e.Entry);
+        Debug.Log($"Word: {e.Entry.Word}, Definition: {e.Entry.Definition}, Score: {e.Entry.Score}");
     }
 
     public float Accuracy()

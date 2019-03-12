@@ -17,11 +17,11 @@ public class WordEventArgs : System.EventArgs
     }
 }
 
-public class ScoreEventArgs : System.EventArgs
+public class EntryEventArgs : System.EventArgs
 {
-    public int Score { get; private set; }
-    public ScoreEventArgs(int score)
+    public Entry Entry { get; private set; }
+    public EntryEventArgs(Entry entry)
     {
-        this.Score = score;
+        this.Entry = entry;
     }
 }

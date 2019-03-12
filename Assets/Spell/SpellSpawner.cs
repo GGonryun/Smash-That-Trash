@@ -11,10 +11,10 @@ public class SpellSpawner : MonoBehaviour
         GameManager.Instance.WordCompleted += SpawnSpell;
     }
 
-    public void SpawnSpell(object sender, ScoreEventArgs e)
+    public void SpawnSpell(object sender, EntryEventArgs e)
     {
         Spell spell = factory.Get();
-        spell.SetPower(e.Score);
+        spell.SetPower(e.Entry.Score);
         spell.gameObject.SetActive(true);
     }
 }

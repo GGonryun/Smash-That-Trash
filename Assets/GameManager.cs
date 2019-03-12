@@ -9,14 +9,14 @@ public class GameManager : Singleton<GameManager>
     public ScoreEventHandler WordCompleted;
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
+    [SerializeField] Entries entries;
     WordDictionary dictionary;
-    Entries entries;
 
     protected override void Awake()
     {
         base.Awake();
         dictionary = new WordDictionary(frequency, maximumWords);
-        entries = new Entries();
+        entries = Instantiate(entries) as Entries;
     }
 
     void Start()
@@ -43,8 +43,8 @@ public class GameManager : Singleton<GameManager>
     private void SubmitWord()
     {
         KeyValuePair<string, string> currentWord = WordBuilder.Instance.ClearWord();
-        entries.Add(new Entry(currentWord.Key, currentWord.Value, LetterReader.Instance.Score));
-        WordCompleted?.Invoke(this, new ScoreEventArgs(LetterReader.Instance.Score));
+        Entry entry = new Entry(currentWord.Key, currentWord.Value, LetterReader.Instance.Score);
+        WordCompleted?.Invoke(this, new EntryEventArgs(entry));
     }
 
     void CreateWord()

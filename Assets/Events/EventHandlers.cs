@@ -2,4 +2,4 @@
 
 public delegate void WordEventHandler(object sender, WordEventArgs e);
 
-public delegate void ScoreEventHandler(object sender, ScoreEventArgs e);
+public delegate void ScoreEventHandler(object sender, EntryEventArgs e);

@@ -10,6 +10,7 @@ public class WordBuilder : Singleton<WordBuilder>
 
     public Word CreateWord(KeyValuePair<string, string> pair)
     {
+        currentWord = pair;
         string w = pair.Key;
         word = new Word();
         for (int i = 0; i < w.Length; i++)
