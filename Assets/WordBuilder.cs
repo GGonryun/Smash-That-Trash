@@ -20,8 +20,7 @@ public class LetterReceivedEventArgs : System.EventArgs
     }
 }
 
-
-public class WordObserver : MonoBehaviour
+public class WordBuilder : MonoBehaviour
 {
     public LetterReceivedEventHandler LetterReceived;
     List<KeyCode> keysPressed;
