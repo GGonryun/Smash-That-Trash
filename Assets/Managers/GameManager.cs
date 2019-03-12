@@ -2,21 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void NewWordEventHandler(object sender, NewWordEventArgs e);
-
-public class NewWordEventArgs : System.EventArgs
-{
-    public Word Word { get; private set; }
-    public NewWordEventArgs(Word word)
-    {
-        this.Word = word;
-    }
-}
-
-
 public class GameManager : Singleton<GameManager>
 {
-    public NewWordEventHandler WordCreated;
+
+    public WordEventHandler WordCreated;
+    public WordEventArgs WordCompleted;
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
     WordDictionary dictionary;
@@ -48,12 +38,13 @@ public class GameManager : Singleton<GameManager>
     {
         KeyValuePair<string, string> currentWord = WordBuilder.Instance.ClearWord();
         entries.Add(new Entry(currentWord.Key, currentWord.Value, LetterReader.Instance.Score));
+
         CreateWord();
     }
 
     void CreateWord()
     {
         Word word = WordBuilder.Instance.CreateWord(dictionary.GetRandom());
-        WordCreated?.Invoke(this, new NewWordEventArgs(word));
+        WordCreated?.Invoke(this, new WordEventArgs(word));
     }
 }

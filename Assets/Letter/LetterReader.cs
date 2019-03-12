@@ -42,7 +42,7 @@ public class LetterReader : Singleton<LetterReader>
         index++;
     }
 
-    void RefreshWord(object sender, NewWordEventArgs e)
+    void RefreshWord(object sender, WordEventArgs e)
     {
         index = 0;
         this.word = e.Word;
