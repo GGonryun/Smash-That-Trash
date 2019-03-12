@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WordDictionary : MonoBehaviour, IEnumerable<KeyValuePair<string, string>>
+public class WordDictionary : IEnumerable<KeyValuePair<string, string>>
 {
     Dictionary<string, string> dictionary;
 
