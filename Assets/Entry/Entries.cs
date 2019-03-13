@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Entries : MonoBehaviour
 {
-    List<Entry> entries;
+    [SerializeField] List<Entry> entries;
 
     void Awake()
     {

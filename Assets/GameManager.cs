@@ -9,14 +9,12 @@ public class GameManager : Singleton<GameManager>
     public ScoreEventHandler WordCompleted;
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
-    [SerializeField] Entries entries;
     WordDictionary dictionary;
 
     protected override void Awake()
     {
         base.Awake();
         dictionary = new WordDictionary(frequency, maximumWords);
-        entries = Instantiate(entries) as Entries;
     }
 
     void Start()
