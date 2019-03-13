@@ -3,18 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : MonoBehaviour
+public class Spell : MonoBehaviour, ITargetter<Enemy>
 {
-    [SerializeField] int power = 0;
+    int power = 0;
     Enemy target;
-
-    public void SetTarget(Enemy target)
-    {
-        this.target = target;
-    }
+    public Enemy Target { get => target; set => target = value; }
 
     public void SetPower(int power)
     {
         this.power = power;
     }
+
 }

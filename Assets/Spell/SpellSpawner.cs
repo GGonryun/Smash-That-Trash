@@ -17,7 +17,7 @@ public class SpellSpawner : MonoBehaviour
     {
         Spell spell = factory.Get();
         spell.SetPower(e.Entry.Score);
-        spell.SetTarget(SelectTarget());
+        spell.Target = SelectTarget();
         spell.gameObject.SetActive(true);
     }
 

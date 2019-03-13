@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyQueue : Singleton<EnemyQueue>
 {
-    List<Enemy> enemies;
+    [SerializeField] List<Enemy> enemies;
 
     public Enemy First
     {

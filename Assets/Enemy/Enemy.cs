@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable
 {
     EnemyFactory parentFactory;
-    [SerializeField] int baseHealth = 10;
-    int health;
-    public int CurrentHealth { get => health; }
+    int baseHealth = 10;
+    int currentHealth = 10;
+    public int CurrentHealth { get => currentHealth; }
+    public int BaseHealth { get => baseHealth; }
 
+    ITargettable target;    
+    public ITargettable Target { get => target; set => target = value; }
+    public Vector3 Location => transform.position;
 
-    public void Initialize(Vector3 position, EnemyFactory factory)
+    public void Initialize(Vector3 position, EnemyFactory factory, int Health)
     {
+        baseHealth = currentHealth = Health;
         parentFactory = factory;
         transform.position = position;
         gameObject.SetActive(true);
+
     }
 
     public void Reclaim()
