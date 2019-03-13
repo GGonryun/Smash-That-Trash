@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : MonoBehaviour, ITargetter<ITargettable>, ISuicidal
+public class Spell : MonoBehaviour, ITargetter<ITargettable>, IReclaimable
 {
     SpellFactory factory;
     int power = 0;
@@ -35,4 +35,8 @@ public class Spell : MonoBehaviour, ITargetter<ITargettable>, ISuicidal
         this.power = power;
     }
 
+    public void Reclaim()
+    {
+        factory.Recycle(this);
+    }
 }

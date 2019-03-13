@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable
+public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable, IReclaimable
 {
     EnemyFactory parentFactory;
     int baseHealth = 10;
