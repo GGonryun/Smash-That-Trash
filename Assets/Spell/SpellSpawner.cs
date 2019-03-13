@@ -6,6 +6,7 @@ public enum Targetting { Closest, Random, Farthest }
 
 public class SpellSpawner : MonoBehaviour
 {
+    [SerializeField] Transform spawnPoint;
     [SerializeField] SpellFactory factory;
     [SerializeField] Targetting targetting = Targetting.Closest;
     private void Start()
@@ -16,7 +17,7 @@ public class SpellSpawner : MonoBehaviour
     public void SpawnSpell(object sender, EntryEventArgs e)
     {
         Spell spell = factory.Get();
-        spell.SetPower(e.Entry.Score);
+        spell.Initialize(spawnPoint.position, e.Entry.Score);
         spell.Target = SelectTarget();
         spell.gameObject.SetActive(true);
     }
