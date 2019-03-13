@@ -8,7 +8,7 @@ public class LetterReader : Singleton<LetterReader>
     Word word;
     public int Score { get; private set; }
 
-    void Start()
+    void OnEnable()
     {
         Keyboard.Instance.KeyPressed += CheckLetter;
         GameManager.Instance.WordCreated += RefreshWord;
@@ -43,8 +43,13 @@ public class LetterReader : Singleton<LetterReader>
 
     void RefreshWord(object sender, WordEventArgs e)
     {
+        RefreshWord(e.Word);
+    }
+
+    private void RefreshWord(Word word)
+    {
         index = 0;
-        this.word = e.Word;
+        this.word = word;
         Score = 0;
     }
 }

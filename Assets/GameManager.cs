@@ -19,12 +19,8 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        CreateWord();
-    }
-
-    void OnEnable()
-    {
         Keyboard.Instance.Terminate += CompleteWord;
+        CreateWord();
     }
 
     private void OnDisable()

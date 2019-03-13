@@ -11,7 +11,7 @@ public class Entries : MonoBehaviour
         entries = new List<Entry>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         GameManager.Instance.WordCompleted += AddEntry;
     }
