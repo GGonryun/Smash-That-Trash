@@ -5,8 +5,7 @@ using UnityEngine;
 public class ApproachTarget : MonoBehaviour
 {
     ITargetter<ITargettable> targettingSystem;
-    [SerializeField] float duration;
-    public EaseFunctionType easeFunction;
+    [SerializeField] float speed = 1f;
 
     void Awake()
     {
@@ -17,7 +16,7 @@ public class ApproachTarget : MonoBehaviour
     {
         if(targettingSystem.Target != null)
         {
-            StartCoroutine(Approach(this.transform.position, targettingSystem.Target, duration, easeFunction));
+            StartCoroutine(Approach(targettingSystem.Target));
         }
         else
         {
@@ -32,24 +31,20 @@ public class ApproachTarget : MonoBehaviour
             yield return new WaitForSeconds(.25f);
             if(targettingSystem.Target != null)
             {
-                yield return StartCoroutine(Approach(this.transform.position, targettingSystem.Target, duration, easeFunction));
+                yield return StartCoroutine(Approach(targettingSystem.Target));
                 break;
             }
         }
     }
 
-    private IEnumerator Approach(Vector3 startingPos, ITargettable newPos, float maxDuration, EaseFunctionType easeFunctionSelection)
+    private IEnumerator Approach(ITargettable target)
     {
         //Begin movement.
-        float elapsedTime = 0f;
-        while (elapsedTime <= maxDuration)
+        while (Vector3.Distance(transform.position, target.Location) > 0.1f)
         {
-            float ratio = elapsedTime / maxDuration;
-            float easedRatio = EaseFunction.Calculate(easeFunctionSelection, ratio);
-
-            transform.localPosition = Vector3.Lerp(startingPos, newPos.Location, easedRatio);
-            elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
+            transform.position = Vector3.MoveTowards(transform.position, target.Location, Time.deltaTime * speed);
+            yield return null;
         }
+        Debug.Log("We've arrived.");
     }
 }
