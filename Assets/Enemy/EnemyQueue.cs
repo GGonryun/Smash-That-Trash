@@ -8,17 +8,22 @@ public class EnemyQueue : Singleton<EnemyQueue>
 
     public Enemy First
     {
-        get => enemies[0];
+        get => Select(0);
     }
 
     public Enemy Random
     {
-        get => enemies[UnityEngine.Random.Range(0, enemies.Count)];
+        get => Select(UnityEngine.Random.Range(0, enemies.Count));
     }
 
     public Enemy Last
     {
-        get => enemies[enemies.Count - 1];
+        get => Select(enemies.Count - 1);
+    }
+
+    Enemy Select(int index)
+    {
+        return enemies.Count > 0 ? enemies[index] : null;
     }
 
     public void Remove(Enemy enemy)

@@ -14,10 +14,10 @@ public class SpellSpawner : MonoBehaviour
         GameManager.Instance.WordCompleted += SpawnSpell;
     }
 
-    public void SpawnSpell(object sender, EntryEventArgs e)
+    void SpawnSpell(object sender, EntryEventArgs e)
     {
         Spell spell = factory.Get();
-        spell.Initialize(spawnPoint.position, e.Entry.Score);
+        spell.Initialize(factory, spawnPoint.position, e.Entry.Score);
         spell.Target = SelectTarget();
         spell.gameObject.SetActive(true);
     }

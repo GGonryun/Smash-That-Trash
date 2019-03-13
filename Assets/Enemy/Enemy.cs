@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable
         parentFactory = factory;
         transform.position = position;
         gameObject.SetActive(true);
-
     }
 
     public void Reclaim()
