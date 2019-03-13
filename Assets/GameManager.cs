@@ -19,22 +19,26 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        Keyboard.Instance.Terminate += CompleteWord;
         CreateWord();
     }
 
-    private void OnDisable()
+    void OnEnable()
+    {
+        Keyboard.Instance.Terminate += CompleteWord;
+    }
+
+    void OnDisable()
     {
         Keyboard.Instance.Terminate -= CompleteWord;
     }
 
-    public void CompleteWord(object sender, KeyPressedEventArgs e)
+    void CompleteWord(object sender, KeyPressedEventArgs e)
     {
         SubmitWord();
         CreateWord();
     }
 
-    private void SubmitWord()
+    void SubmitWord()
     {
         KeyValuePair<string, string> currentWord = WordBuilder.Instance.ClearWord();
         Entry entry = new Entry(currentWord.Key, currentWord.Value, LetterReader.Instance.Score);
