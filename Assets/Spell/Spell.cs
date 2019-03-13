@@ -3,35 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : Projectile, IReclaimable, ITargetter<ITargettable>
+public class Spell : Projectile, IReclaimable
 {
     SpellSpawner spawner;
-    ITargettable target;
-    public ITargettable Target { get => target; set => target = value; }
 
-    void OnEnable()
+    public void LocateTarget()
     {
+        if (Target == null || !Target.IsActive)
+        {
+            Target = spawner.SelectTarget();
+        }
     }
 
-    void OnDisable()
-    {
-    }
     void Update()
     {
-        if(target == null || !target.IsActive)
-        {
-            Debug.Log("no target");
-            target = spawner.SelectTarget();
-        }
+        LocateTarget();
     }
-    public void LocateTarget(object sender, EnemyEventArgs e)
-    {
-        if (target == null || !target.IsActive)
-        {
-            target = spawner.SelectTarget();
-        }
-    }
-
 
     public void Initialize(SpellSpawner spawner, Vector3 position)
     {
@@ -41,7 +28,6 @@ public class Spell : Projectile, IReclaimable, ITargetter<ITargettable>
 
     public void Reclaim()
     {
-        target = null;
         spawner.Reclaim(this);
     }
 

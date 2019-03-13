@@ -46,4 +46,4 @@ MonoBehaviour:
   enemyFactories:
   - {fileID: 11400000, guid: 96034c011ee3df843a543d70e1b145f9, type: 2}
   - {fileID: 11400000, guid: b9bcdcd41e7578140a90d499d1ea11de, type: 2}
-  enemyHealth: 10
+  enemyHealth: 15

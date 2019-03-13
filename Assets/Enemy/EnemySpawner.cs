@@ -30,13 +30,23 @@ public class EnemySpawner : Singleton<EnemySpawner>
         Vector3 position = new Vector3(7f, 7f, 0f);
 
         enemy.Initialize(position, i, enemyHealth);
-        EnemySpawned?.Invoke(this, new EnemyEventArgs(enemy));
+        OnEnemySpawned(new EnemyEventArgs(enemy));
     }
 
     public void Despawn(Enemy enemy, int factoryIndex)
     {
         enemyFactories[factoryIndex].Recycle(enemy);
         EnemyQueue.Instance.Remove(enemy);
-        EnemyDespawned?.Invoke(this, new EnemyEventArgs(enemy));
+        OnEnemyDespawned(new EnemyEventArgs(enemy));
+    }
+
+    void OnEnemySpawned(EnemyEventArgs e)
+    {
+        EnemySpawned?.Invoke(this, e);
+    }
+
+    void OnEnemyDespawned(EnemyEventArgs e)
+    {
+        EnemyDespawned?.Invoke(this, e);
     }
 }
