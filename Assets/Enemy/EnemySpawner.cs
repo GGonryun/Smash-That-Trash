@@ -7,7 +7,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
     [SerializeField] EnemyFactory[] enemyFactories;
     [SerializeField] int enemyHealth = 10;
     ITargettable target = null;
-    public EnemySpawnedEventHandler EnemySpawned;
+    public EnemyEventHandler EnemySpawned;
+    public EnemyEventHandler EnemyDespawned;
     
 
     protected override void Awake()
@@ -28,7 +29,14 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         Vector3 position = new Vector3(7f, 7f, 0f);
 
-        enemy.Initialize(position, enemyFactories[i], enemyHealth);
-        EnemySpawned?.Invoke(this, new EnemySpawnedEventArgs(enemy));
+        enemy.Initialize(position, i, enemyHealth);
+        EnemySpawned?.Invoke(this, new EnemyEventArgs(enemy));
+    }
+
+    public void Despawn(Enemy enemy, int factoryIndex)
+    {
+        enemyFactories[factoryIndex].Recycle(enemy);
+        EnemyQueue.Instance.Remove(enemy);
+        EnemyDespawned?.Invoke(this, new EnemyEventArgs(enemy));
     }
 }

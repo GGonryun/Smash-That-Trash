@@ -17,7 +17,7 @@ public class SpellSpawner : MonoBehaviour
     void SpawnSpell(object sender, LetterEventArgs e)
     {
         Spell spell = factory.Get();
-        spell.Initialize(factory, e.Letter.transform.position, 1);
+        spell.Initialize(this, e.Letter.transform.position);
         spell.Target = SelectTarget();
         spell.gameObject.SetActive(true);
     }
@@ -34,5 +34,10 @@ public class SpellSpawner : MonoBehaviour
                 return EnemyQueue.Instance.Random;
         }
         throw new System.Exception("You have not selected a valid targetting mode!");
+    }
+
+    public void Reclaim(Spell spell)
+    {
+        factory.Recycle(spell);
     }
 }

@@ -3,40 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : MonoBehaviour, ITargetter<ITargettable>, IReclaimable
+public class Spell : Projectile, IReclaimable, ITargetter<ITargettable>
 {
-    SpellFactory factory;
-    int power = 0;
+    SpellSpawner spawner;
     ITargettable target;
     public ITargettable Target { get => target; set => target = value; }
 
     void OnEnable()
     {
-        EnemySpawner.Instance.EnemySpawned += ReTarget;
     }
 
     void OnDisable()
     {
-        EnemySpawner.Instance.EnemySpawned -= ReTarget;
     }
-
-    public void ReTarget(object sender, EnemySpawnedEventArgs e)
+    void Update()
     {
-        if(target == null)
+        if(target == null || !target.IsActive)
         {
-            target = e.Enemy as ITargettable;
+            Debug.Log("no target");
+            target = spawner.SelectTarget();
+        }
+    }
+    public void LocateTarget(object sender, EnemyEventArgs e)
+    {
+        if (target == null || !target.IsActive)
+        {
+            target = spawner.SelectTarget();
         }
     }
 
-    public void Initialize(SpellFactory factory, Vector3 position, int power)
+
+    public void Initialize(SpellSpawner spawner, Vector3 position)
     {
-        this.factory = factory;
+        this.spawner = spawner;
         this.transform.position = position;
-        this.power = power;
     }
 
     public void Reclaim()
     {
-        factory.Recycle(this);
+        target = null;
+        spawner.Reclaim(this);
     }
+
+
 }

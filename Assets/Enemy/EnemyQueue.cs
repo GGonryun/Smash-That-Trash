@@ -31,7 +31,7 @@ public class EnemyQueue : Singleton<EnemyQueue>
         enemies.Remove(enemy);
     }
 
-    void Add(object sender, EnemySpawnedEventArgs e)
+    void Add(object sender, EnemyEventArgs e)
     {
         enemies.Add(e.Enemy);
     }
@@ -50,8 +50,5 @@ public class EnemyQueue : Singleton<EnemyQueue>
     private void OnDisable()
     {
         EnemySpawner.Instance.EnemySpawned -= Add;
-
     }
-
-
 }

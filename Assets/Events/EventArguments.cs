@@ -27,10 +27,10 @@ public class EntryEventArgs : System.EventArgs
 }
 
 
-public class EnemySpawnedEventArgs : System.EventArgs
+public class EnemyEventArgs : System.EventArgs
 {
     public Enemy Enemy { get; private set; }
-    public EnemySpawnedEventArgs(Enemy enemy)
+    public EnemyEventArgs(Enemy enemy)
     {
         this.Enemy = enemy;
     }

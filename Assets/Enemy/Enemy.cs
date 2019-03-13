@@ -2,39 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable, IDamageable
+public class Enemy : Damageable, ITargetter<ITargettable>, ITargettable
 {
-    EnemyFactory parentFactory;
-    int baseHealth = 10;
-    int currentHealth = 10;
-    public int CurrentHealth { get => currentHealth; }
-    public int BaseHealth { get => baseHealth; }
-
+    int factoryIndex;
     [SerializeField] ITargettable target;    
     public ITargettable Target { get => target; set => target = value; }
     public Vector3 Location => transform.position;
 
-    public void Initialize(Vector3 position, EnemyFactory factory, int Health)
+    public bool IsActive => gameObject.activeInHierarchy;
+
+    public void Initialize(Vector3 position, int factoryIndex, int startingHealth)
     {
-        baseHealth = currentHealth = Health;
-        parentFactory = factory;
+        BaseHealth = CurrentHealth = startingHealth;
+        this.factoryIndex = factoryIndex;
         transform.position = position;
         gameObject.SetActive(true);
     }
 
-    void Destroy()
-    {
-        parentFactory.Recycle(this);
-    }
+    protected override void Destroy() => EnemySpawner.Instance.Despawn(this, factoryIndex);
 
 
-    void IDamageable.Damage(int i)
-    {
-        currentHealth -= i;
-        if(currentHealth <= 0)
-        {
-            Destroy();
-        }
-    }
+
 
 }

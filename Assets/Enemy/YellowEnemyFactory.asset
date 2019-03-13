@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9910ab8facdd45b4e8781ab560d268c2, type: 3}
   m_Name: YellowEnemyFactory
   m_EditorClassIdentifier: 
-  template: {fileID: 4055188617714863968, guid: d827de09fdb169040ba94f8440a5c970,
-    type: 3}
+  template: {fileID: 9534123261893972, guid: 602a17dc7c6df054aab5d53f8aef7d62, type: 3}

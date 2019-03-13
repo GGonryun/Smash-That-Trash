@@ -12,39 +12,11 @@ public class ApproachTarget : MonoBehaviour
         targettingSystem = GetComponent<ITargetter<ITargettable>>();
     }
 
-    private void Start()
+    private void Update()
     {
-        if(targettingSystem.Target != null)
+        if (targettingSystem.Target != null && targettingSystem.Target.IsActive)
         {
-            StartCoroutine(Approach(targettingSystem.Target));
+            transform.position = Vector3.MoveTowards(transform.position, targettingSystem.Target.Location, Time.deltaTime * speed);
         }
-        else
-        {
-            StartCoroutine(AwaitTarget());
-        }
-    }
-
-    private IEnumerator AwaitTarget()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(.25f);
-            if(targettingSystem.Target != null)
-            {
-                yield return StartCoroutine(Approach(targettingSystem.Target));
-                break;
-            }
-        }
-    }
-
-    private IEnumerator Approach(ITargettable target)
-    {
-        //Begin movement.
-        while (Vector3.Distance(transform.position, target.Location) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target.Location, Time.deltaTime * speed);
-            yield return null;
-        }
-        Debug.Log("We've arrived.");
     }
 }

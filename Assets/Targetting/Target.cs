@@ -5,4 +5,5 @@ using UnityEngine;
 public class Target : MonoBehaviour, ITargettable
 {
     public Vector3 Location { get => transform.position; }
+    public bool IsActive => gameObject.activeInHierarchy;
 }
