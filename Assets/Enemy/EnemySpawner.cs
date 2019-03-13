@@ -24,9 +24,9 @@ public class EnemySpawner : Singleton<EnemySpawner>
         }
         int i = Random.Range(0, enemyFactories.Length);
         Enemy enemy = enemyFactories[i].Get();
-        Vector3 position = Vector3.zero;
-
         enemy.Target = target;
+
+        Vector3 position = Vector3.zero;
         enemy.Initialize(position, enemyFactories[i], enemyHealth);
         EnemySpawned?.Invoke(this, new EnemySpawnedEventArgs(enemy));
     }

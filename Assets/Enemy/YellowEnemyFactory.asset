@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9910ab8facdd45b4e8781ab560d268c2, type: 3}
-  m_Name: EnemyFactory
+  m_Name: YellowEnemyFactory
   m_EditorClassIdentifier: 
-  template: {fileID: 4055188617714863968, guid: 393a6f887439c954d8d83db51ba2b1a1,
+  template: {fileID: 4055188617714863968, guid: d827de09fdb169040ba94f8440a5c970,
     type: 3}

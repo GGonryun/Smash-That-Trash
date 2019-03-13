@@ -17,6 +17,14 @@ public class GameManager : Singleton<GameManager>
         dictionary = new WordDictionary(frequency, maximumWords);
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            EnemySpawner.Instance.Spawn();
+        }
+    }
+
     void Start()
     {
         CreateWord();

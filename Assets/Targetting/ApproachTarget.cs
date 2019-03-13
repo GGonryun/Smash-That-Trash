@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class ApproachTarget : MonoBehaviour
 {
-    ITargettable target;
+    ITargetter<ITargettable> targettingSystem;
     [SerializeField] float speed;
 
     void Awake()
     {
-        target = GetComponent<ITargetter<ITargettable>>().Target;
+        targettingSystem = GetComponent<ITargetter<ITargettable>>();
     }
 
     void Update()
     {
-        transform.position = 
-            Vector3.Lerp(
-            transform.position, 
-            target.Location, 
-            Time.deltaTime * speed
-            );
+        if(targettingSystem.Target != null)
+        {
+            transform.position =
+                Vector3.Lerp(
+                transform.position,
+                targettingSystem.Target.Location,
+                Time.deltaTime * speed
+                );
+        }
+        
     }
 }

@@ -31,8 +31,9 @@ public class EnemyQueue : Singleton<EnemyQueue>
         enemies.Add(e.Enemy);
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         enemies = new List<Enemy>();
     }
 

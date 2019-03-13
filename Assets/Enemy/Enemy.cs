@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable
     public int CurrentHealth { get => currentHealth; }
     public int BaseHealth { get => baseHealth; }
 
-    ITargettable target;    
+    [SerializeField] ITargettable target;    
     public ITargettable Target { get => target; set => target = value; }
     public Vector3 Location => transform.position;
 
