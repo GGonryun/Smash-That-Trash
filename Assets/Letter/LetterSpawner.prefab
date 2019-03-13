@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8446e9a407919b2a080ec53eb219b97005f93e18abeab97e3281b43170a2dccb
-size 1441
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8746288097015618051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9147172130909697963}
+  - component: {fileID: 3160627768225435279}
+  m_Layer: 0
+  m_Name: LetterSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &9147172130909697963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746288097015618051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.16586232, y: 0.115271166, z: 0.008269162}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3160627768225435279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746288097015618051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cf418e13efd40489edd966f39874eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letterFactory: {fileID: 11400000, guid: 607abdcf4f0ee8543a08f4f6a309dc88, type: 2}
+  parent: {fileID: 0}

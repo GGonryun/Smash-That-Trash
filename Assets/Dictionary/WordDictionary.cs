@@ -60,7 +60,7 @@ public class WordDictionary : IEnumerable<KeyValuePair<string, string>>
     {
         string[] pair = line.Split(':');
         word = pair[0].Trim(' ', '"');
-        definition = pair[1].Trim(' ', '"', ',');
+        definition = pair[1].TrimEnd(System.Environment.NewLine.ToCharArray()).Trim(' ', ',', '"');
     }
 
     IEnumerator<KeyValuePair<string, string>> IEnumerable<KeyValuePair<string, string>>.GetEnumerator()
