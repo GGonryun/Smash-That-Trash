@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    EnemyFactory parentFactory;
+    [SerializeField] int baseHealth = 10;
+    int health;
+    public int CurrentHealth { get => health; }
+
+
+    public void Initialize(Vector3 position, EnemyFactory factory)
     {
-        
+        parentFactory = factory;
+        transform.position = position;
+        gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Reclaim()
     {
-        
+        parentFactory.Recycle(this);
     }
 }

@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] EnemyFactory[] enemyFactories;
+    public EnemySpawnedEventHandler EnemySpawned;
 
-    // Update is called once per frame
-    void Update()
+    public void Spawn()
     {
-        
+        if(enemyFactories == null)
+        {
+            throw new System.Exception("No enemy factories exist!");
+        }
+        int i = Random.Range(0, enemyFactories.Length);
+        Enemy enemy = enemyFactories[i].Get();
+        Vector3 position = Vector3.zero;
+
+        enemy.Initialize(position, enemyFactories[i]);
+        EnemySpawned?.Invoke(this, new EnemySpawnedEventArgs(enemy));
     }
 }

@@ -25,3 +25,13 @@ public class EntryEventArgs : System.EventArgs
         this.Entry = entry;
     }
 }
+
+
+public class EnemySpawnedEventArgs : System.EventArgs
+{
+    public Enemy Enemy { get; private set; }
+    public EnemySpawnedEventArgs(Enemy enemy)
+    {
+        this.Enemy = enemy;
+    }
+}
