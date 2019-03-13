@@ -11,13 +11,13 @@ public class SpellSpawner : MonoBehaviour
     [SerializeField] Targetting targetting = Targetting.Closest;
     private void Start()
     {
-        GameManager.Instance.WordCompleted += SpawnSpell;
+        LetterReader.Instance.CorrectLetterPressed += SpawnSpell;
     }
 
-    void SpawnSpell(object sender, EntryEventArgs e)
+    void SpawnSpell(object sender, LetterEventArgs e)
     {
         Spell spell = factory.Get();
-        spell.Initialize(factory, spawnPoint.position, e.Entry.Score);
+        spell.Initialize(factory, e.Letter.transform.position, 1);
         spell.Target = SelectTarget();
         spell.gameObject.SetActive(true);
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable, IReclaimable
+public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable, IDamageable
 {
     EnemyFactory parentFactory;
     int baseHealth = 10;
@@ -22,8 +22,19 @@ public class Enemy : MonoBehaviour, ITargetter<ITargettable>, ITargettable, IRec
         gameObject.SetActive(true);
     }
 
-    public void Reclaim()
+    void Destroy()
     {
         parentFactory.Recycle(this);
     }
+
+
+    void IDamageable.Damage(int i)
+    {
+        currentHealth -= i;
+        if(currentHealth <= 0)
+        {
+            Destroy();
+        }
+    }
+
 }

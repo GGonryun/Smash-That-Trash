@@ -7,6 +7,7 @@ public class LetterReader : Singleton<LetterReader>
     int index;
     Word word;
     public int Score { get; private set; }
+    public LetterEventHandler CorrectLetterPressed;
 
     void OnEnable()
     {
@@ -32,6 +33,7 @@ public class LetterReader : Singleton<LetterReader>
         {
             Score++;
             letter.SetType(Status.Correct);
+            CorrectLetterPressed?.Invoke(this, new LetterEventArgs(letter));
         }
         else
         {

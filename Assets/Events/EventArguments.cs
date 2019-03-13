@@ -35,3 +35,12 @@ public class EnemySpawnedEventArgs : System.EventArgs
         this.Enemy = enemy;
     }
 }
+
+public class LetterEventArgs : System.EventArgs
+{
+    public Letter Letter { get; private set; }
+    public LetterEventArgs(Letter letter)
+    {
+        this.Letter = letter;
+    }
+}
