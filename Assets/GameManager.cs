@@ -8,11 +8,15 @@ public class GameManager : Singleton<GameManager>
 
     public WordEventHandler WordCreated;
     public EntryEventHandler WordCompleted;
+    public IntEventHandler WaveSpawned;
+    public EntriesEventHandler GameOver;
+    public IntEventHandler InitializeGame;
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
     [SerializeField] float spawnSpeed = 3f;
     [SerializeField] float difficulty = .05f;
     [SerializeField] Enemy blackHole;
+    [SerializeField] Entries entries;
     public int waveNumber = 0;
     public int WaveNumber { get => waveNumber; }
     WordDictionary dictionary;
@@ -29,7 +33,7 @@ public class GameManager : Singleton<GameManager>
     {
         if(Input.GetKeyDown(KeyCode.Return))
         {
-            InitializeGame();
+            Initialize();
         }
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
@@ -44,11 +48,15 @@ public class GameManager : Singleton<GameManager>
         StopAllCoroutines();
         EnemySpawner.Instance.Clear();
         WordBuilder.Instance.ClearWord();
+
+        GameOver?.Invoke(this, new DataEventArgs<Entries>(entries));
     }
 
-    public void InitializeGame()
+    public void Initialize()
     {
         waveNumber++;
+        InitializeGame?.Invoke(this, new DataEventArgs<int>(0));
+        entries.Clear();
         Keyboard.Instance.Enable();
         CreateWord();
         player.Initialize();
@@ -61,6 +69,7 @@ public class GameManager : Singleton<GameManager>
         float waveCount = 3;
         while(true)
         {
+            WaveSpawned?.Invoke(this, new DataEventArgs<int>(waveNumber));
             Debug.Log(Mathf.FloorToInt(waveCount));
             for(int i = 0; i < Mathf.FloorToInt(waveCount); i++)
             {
@@ -71,6 +80,7 @@ public class GameManager : Singleton<GameManager>
             spawnSpeed = UnityEngine.Random.Range(spawnSpeed * .945f, spawnSpeed * 1.045f);
             waveCount *= (1 + difficulty);
             waveNumber++;
+
         }
     }
 

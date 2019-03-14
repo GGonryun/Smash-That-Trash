@@ -26,6 +26,16 @@ public class Entries : MonoBehaviour
         entries.Add(e.Data);
     }
 
+    public void Clear()
+    {
+        entries.Clear();
+    }
+
+    public List<Entry> Retrieve()
+    {
+        return entries;
+    }
+
     public float Accuracy()
     {
         int success = 0, total = 0;

@@ -68,9 +68,9 @@ public class EnemyQueue : Singleton<EnemyQueue>
         enemies.Remove(enemy);
     }
 
-    void Add(object sender, EnemyEventArgs e)
+    void Add(object sender, DataEventArgs<Enemy> e)
     {
-        enemies.Add(e.Enemy);
+        enemies.Add(e.Data);
     }
 
     protected override void Awake()

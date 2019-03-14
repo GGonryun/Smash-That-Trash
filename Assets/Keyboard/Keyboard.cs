@@ -24,12 +24,12 @@ public class Keyboard : Singleton<Keyboard>
         }
     }
 
-    void OnTerminate(KeyPressedEventArgs e)
+    void OnTerminate(DataEventArgs<KeyCode> e)
     {
         Terminate?.Invoke(this, e);
     }
 
-    void OnKeyPressed(KeyPressedEventArgs e)
+    void OnKeyPressed(DataEventArgs<KeyCode> e)
     {
         KeyPressed?.Invoke(this, e);
     }
@@ -38,7 +38,7 @@ public class Keyboard : Singleton<Keyboard>
     {
         if (Input.GetKeyDown(terminationKey))
         {
-            OnTerminate(new KeyPressedEventArgs(terminationKey));
+            OnTerminate(new DataEventArgs<KeyCode>(terminationKey));
         }
     }
 
@@ -48,7 +48,7 @@ public class Keyboard : Singleton<Keyboard>
         {
             if (Input.GetKeyDown(key))
             {
-                OnKeyPressed(new KeyPressedEventArgs(key));
+                OnKeyPressed(new DataEventArgs<KeyCode>(key));
             }
         }
     }

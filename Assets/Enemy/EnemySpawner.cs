@@ -10,8 +10,8 @@ public class EnemySpawner : Singleton<EnemySpawner>
     public EnemyEventHandler EnemyDespawned;
 
     [SerializeField] Vector2 spawnPoint;
-    [SerializeField] [Range(0, 20f)] float horizontalSpawnRange;
-    [SerializeField] [Range(0, 20f)] float verticalSpawnRange;
+    [SerializeField] [Range(0, 20f)] float horizontalSpawnRange = 10f;
+    [SerializeField] [Range(0, 20f)] float verticalSpawnRange = 1f;
 
     List<Enemy> enemies;
 
@@ -36,14 +36,14 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         enemy.Initialize(position, i);
         enemies.Add(enemy);
-        OnEnemySpawned(new EnemyEventArgs(enemy));
+        OnEnemySpawned(new DataEventArgs<Enemy>(enemy));
     }
 
     public void Despawn(Enemy enemy, int factoryIndex)
     {
         enemyFactories[factoryIndex].Recycle(enemy);
         EnemyQueue.Instance.Remove(enemy);
-        OnEnemyDespawned(new EnemyEventArgs(enemy));
+        OnEnemyDespawned(new DataEventArgs<Enemy>(enemy));
     }
 
     public void Clear()
@@ -65,12 +65,12 @@ public class EnemySpawner : Singleton<EnemySpawner>
         return spawn;
     }
 
-    void OnEnemySpawned(EnemyEventArgs e)
+    void OnEnemySpawned(DataEventArgs<Enemy> e)
     {
         EnemySpawned?.Invoke(this, e);
     }
 
-    void OnEnemyDespawned(EnemyEventArgs e)
+    void OnEnemyDespawned(DataEventArgs<Enemy> e)
     {
         EnemyDespawned?.Invoke(this, e);
     }

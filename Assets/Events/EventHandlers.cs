@@ -9,3 +9,5 @@ public delegate void EnemyEventHandler(object sender, DataEventArgs<Enemy> e);
 public delegate void LetterEventHandler(object sender, DataEventArgs<Letter> e);
 
 public delegate void IntEventHandler(object sender, DataEventArgs<int> e);
+
+public delegate void EntriesEventHandler(object sender, DataEventArgs<Entries> e);

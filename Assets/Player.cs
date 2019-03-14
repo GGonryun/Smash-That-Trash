@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Player : Damageable, ITargettable
 {
+    public IntEventHandler HealthTracker;
     public Vector3 Location { get => transform.position; }
     public bool IsActive => gameObject.activeInHierarchy;
-    [SerializeField] int startingHealth = 5 ;
+    [SerializeField] int startingHealth = 5;
     SpellSpawner spawner;
+
     void Awake()
     {
         spawner = GetComponent<SpellSpawner>();
@@ -17,6 +19,7 @@ public class Player : Damageable, ITargettable
     {
         BaseHealth = CurrentHealth = startingHealth;
         spawner.Clear();
+        HealthTracker?.Invoke(this, new DataEventArgs<int>(CurrentHealth));
     }
 
     public override void Destroy()
@@ -30,6 +33,7 @@ public class Player : Damageable, ITargettable
         {
             IDamageable self = this as IDamageable;
             self.Damage(1);
+            HealthTracker?.Invoke(this, new DataEventArgs<int>(CurrentHealth));
         }
     }
 }

@@ -47,11 +47,11 @@ public class SpellSpawner : MonoBehaviour
             targetting = Targetting.Random;
         }
     }
-    void SpawnSpell(object sender, LetterEventArgs e)
+    void SpawnSpell(object sender, DataEventArgs<Letter> e)
     {
         Spell spell = factory.Get();
         spells.Add(spell);
-        spell.Initialize(this, e.Letter.transform.position);
+        spell.Initialize(this, e.Data.transform.position);
         spell.Target = SelectTarget();
         spell.gameObject.SetActive(true);
     }
