@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Damageable, ITargetter<ITargettable>, ITargettable
 {
-    int factoryIndex;
+    public int FactoryIndex { get; private set; }
     [SerializeField] ITargettable target;
     [SerializeField] int startingHealth;
     public ITargettable Target { get => target; set => target = value; }
@@ -15,12 +15,12 @@ public class Enemy : Damageable, ITargetter<ITargettable>, ITargettable
     public void Initialize(Vector3 position, int factoryIndex)
     {
         BaseHealth = CurrentHealth = startingHealth;
-        this.factoryIndex = factoryIndex;
+        this.FactoryIndex = factoryIndex;
         transform.position = position;
         gameObject.SetActive(true);
     }
 
-    public override void Destroy() => EnemySpawner.Instance.Despawn(this, factoryIndex);
+    public override void Destroy() => EnemySpawner.Instance.Despawn(this, FactoryIndex);
 
 
 

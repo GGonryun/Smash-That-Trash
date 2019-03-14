@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9910ab8facdd45b4e8781ab560d268c2, type: 3}
+  m_Name: Large Box
+  m_EditorClassIdentifier: 
+  template: {fileID: 1574934120892853990, guid: d6a511b575dc4894e8d39e75b270f191,
+    type: 3}
