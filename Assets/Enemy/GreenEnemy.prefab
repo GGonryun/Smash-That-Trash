@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4064274002793665076
+--- !u!1001 &7403290130460305540
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 4055188617714863968, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
       propertyPath: startingHealth
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4055188617714863969, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
       propertyPath: m_Name
-      value: Yellow Enemy
+      value: GreenEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 4055188617714863971, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
@@ -75,32 +75,27 @@ PrefabInstance:
     - target: {fileID: 4055188617714863971, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4055188617714863971, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4055188617714863971, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 856938915811567491, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
       propertyPath: speed
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4055188617714863997, guid: 393a6f887439c954d8d83db51ba2b1a1,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4055188617714863997, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.740669
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4055188617714863997, guid: 393a6f887439c954d8d83db51ba2b1a1,
         type: 3}

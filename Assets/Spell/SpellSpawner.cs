@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Targetting { Closest, Random, Farthest }
+public enum Targetting { Closest, Farthest, First, Last, Random }
 
 public class SpellSpawner : MonoBehaviour
 {
@@ -27,8 +27,12 @@ public class SpellSpawner : MonoBehaviour
         switch(targetting)
         {
             case Targetting.Closest:
-                return EnemyQueue.Instance.First;
+                return EnemyQueue.Instance.Closest;
             case Targetting.Farthest:
+                return EnemyQueue.Instance.Farthest;
+            case Targetting.First:
+                return EnemyQueue.Instance.First;
+            case Targetting.Last:
                 return EnemyQueue.Instance.Last;
             case Targetting.Random:
                 return EnemyQueue.Instance.Random;

@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemySpawner : Singleton<EnemySpawner>
 {
     [SerializeField] EnemyFactory[] enemyFactories;
-    [SerializeField] int enemyHealth = 10;
     ITargettable target = null;
     public EnemyEventHandler EnemySpawned;
     public EnemyEventHandler EnemyDespawned;
@@ -32,7 +31,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
         Vector3 position = SelectRandomPos();
 
-        enemy.Initialize(position, i, enemyHealth);
+        enemy.Initialize(position, i);
         OnEnemySpawned(new EnemyEventArgs(enemy));
     }
 

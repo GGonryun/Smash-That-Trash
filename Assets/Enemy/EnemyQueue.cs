@@ -5,26 +5,63 @@ using UnityEngine;
 public class EnemyQueue : Singleton<EnemyQueue>
 {
     [SerializeField] List<Enemy> enemies;
+    Transform player;
+
+    public Enemy Closest
+    {
+        get => SelectEnemy(
+            (distance, minimum) => distance < minimum,
+            System.Int32.MaxValue
+            );
+    }
+
+    public Enemy Farthest
+    {
+        get => SelectEnemy(
+            (distance, maximum) => distance < maximum,
+            0f
+            );
+    }
 
     public Enemy First
     {
-        get => Select(0);
+        get => SelectEnemy(0);
     }
 
     public Enemy Random
     {
-        get => Select(UnityEngine.Random.Range(0, enemies.Count));
+        get => SelectEnemy(UnityEngine.Random.Range(0, enemies.Count));
     }
 
     public Enemy Last
     {
-        get => Select(enemies.Count - 1);
+        get => SelectEnemy(enemies.Count - 1);
     }
 
-    Enemy Select(int index)
+    Enemy SelectEnemy(int index)
     {
         return enemies.Count > 0 ? enemies[index] : null;
     }
+
+    Enemy SelectEnemy(System.Func<float, float, bool> comparitor, float startingValue)
+    {
+        float cached = startingValue;
+        Enemy selection = null;
+        if (enemies.Count > 0)
+        {
+            foreach (var enemy in enemies)
+            {
+                float distance = Mathf.Abs(Vector3.Distance(player.position, enemy.gameObject.transform.position));
+                if (comparitor(distance, cached))
+                {
+                    cached = distance;
+                    selection = enemy;
+                }
+            }
+        }
+        return selection;
+    }
+    
 
     public void Remove(Enemy enemy)
     {
@@ -40,6 +77,7 @@ public class EnemyQueue : Singleton<EnemyQueue>
     {
         base.Awake();
         enemies = new List<Enemy>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void OnEnable()
