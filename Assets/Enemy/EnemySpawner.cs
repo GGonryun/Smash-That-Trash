@@ -9,12 +9,15 @@ public class EnemySpawner : Singleton<EnemySpawner>
     ITargettable target = null;
     public EnemyEventHandler EnemySpawned;
     public EnemyEventHandler EnemyDespawned;
-    
+
+    [SerializeField] Vector2 spawnPoint;
+    [SerializeField] [Range(0, 20f)] float horizontalSpawnRange;
+    [SerializeField] [Range(0, 20f)] float verticalSpawnRange;
 
     protected override void Awake()
     {
         base.Awake();
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Target>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<ITargettable>();
     }
 
     public void Spawn()
@@ -27,7 +30,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
         Enemy enemy = enemyFactories[i].Get();
         enemy.Target = target;
 
-        Vector3 position = new Vector3(7f, 7f, 0f);
+        Vector3 position = SelectRandomPos();
 
         enemy.Initialize(position, i, enemyHealth);
         OnEnemySpawned(new EnemyEventArgs(enemy));
@@ -38,6 +41,16 @@ public class EnemySpawner : Singleton<EnemySpawner>
         enemyFactories[factoryIndex].Recycle(enemy);
         EnemyQueue.Instance.Remove(enemy);
         OnEnemyDespawned(new EnemyEventArgs(enemy));
+    }
+
+    Vector2 SelectRandomPos()
+    {
+        Vector2 spawn = spawnPoint + new Vector2(
+            Random.Range(-horizontalSpawnRange, horizontalSpawnRange),
+            Random.Range(-verticalSpawnRange, verticalSpawnRange)
+            );
+
+        return spawn;
     }
 
     void OnEnemySpawned(EnemyEventArgs e)

@@ -47,3 +47,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96034c011ee3df843a543d70e1b145f9, type: 2}
   - {fileID: 11400000, guid: b9bcdcd41e7578140a90d499d1ea11de, type: 2}
   enemyHealth: 15
+  spawnPoint: {x: 0, y: -10}
+  horizontalSpawnRange: 10.4
+  verticalSpawnRange: 2.4
