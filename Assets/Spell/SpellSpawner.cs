@@ -37,14 +37,6 @@ public class SpellSpawner : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ChangeTargettingMode(Targetting.First);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-             ChangeTargettingMode(Targetting.Last);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
             ChangeTargettingMode(Targetting.Random);
         }
     }
