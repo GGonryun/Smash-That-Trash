@@ -12,7 +12,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] Canvas GameOverScreen;
     [SerializeField] Canvas GameScreen;
     [SerializeField] Player player;
-    void OnEnable()
+    [SerializeField] EntriesDisplay entriesDisplayer;
+
+    void Start()
     {
         GameManager.Instance.WaveSpawned += UpdateWaveNumber;
         GameManager.Instance.GameOver += DisplayGameOverScreen;
@@ -31,6 +33,7 @@ public class UIManager : Singleton<UIManager>
 
     private void DisplayGameScreen(object sender, DataEventArgs<int> e)
     {
+        entriesDisplayer.Clear();
         GameScreen.gameObject.SetActive(true);
         GameOverScreen.gameObject.SetActive(false);
     }
@@ -39,6 +42,7 @@ public class UIManager : Singleton<UIManager>
     {
         GameOverScreen.gameObject.SetActive(true);
         GameScreen.gameObject.SetActive(false);
+        entriesDisplayer.Initialize(e.Data);
     }
 
     void UpdateWaveNumber(object sender, DataEventArgs<int> e)

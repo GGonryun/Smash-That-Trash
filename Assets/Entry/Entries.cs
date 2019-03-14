@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entries : MonoBehaviour
+public class Entries : MonoBehaviour, IEnumerable<Entry>
 {
     [SerializeField] List<Entry> entries;
 
@@ -45,5 +45,18 @@ public class Entries : MonoBehaviour
             success += entry.Score;
         }
         return success/(float)total;
+    }
+
+    public IEnumerator<Entry> GetEnumerator()
+    {
+        foreach(var entry in entries)
+        {
+            yield return entry;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        throw new System.NotImplementedException();
     }
 }
