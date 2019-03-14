@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] int maximumWords = 100;
     [SerializeField] float spawnSpeed = 3f;
     [SerializeField] float difficulty = .05f;
+    [SerializeField] Enemy blackHole;
     WordDictionary dictionary;
     Player player;
 
@@ -38,6 +39,7 @@ public class GameManager : Singleton<GameManager>
         player.Initialize();
         EnemySpawner.Instance.Clear();
         StartCoroutine(SpawnEnemies());
+        blackHole.Initialize(new Vector2(0, -40f), -1);
     }
 
     private IEnumerator SpawnEnemies()
@@ -46,7 +48,7 @@ public class GameManager : Singleton<GameManager>
         {
             EnemySpawner.Instance.Spawn();
             yield return new WaitForSeconds(spawnSpeed);
-            spawnSpeed = Mathf.Clamp(spawnSpeed - difficulty, 0.1f, 10f);
+            spawnSpeed = Mathf.Clamp(spawnSpeed - difficulty, 0.25f, 10f);
         }
 
 

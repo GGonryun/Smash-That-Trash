@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyQueue : Singleton<EnemyQueue>
 {
     [SerializeField] List<Enemy> enemies;
+    [SerializeField] Enemy blackHole;
     Transform player;
 
     public Enemy Closest
@@ -40,13 +41,13 @@ public class EnemyQueue : Singleton<EnemyQueue>
 
     Enemy SelectEnemy(int index)
     {
-        return enemies.Count > 0 ? enemies[index] : null;
+        return enemies.Count > 0 ? enemies[index] : blackHole;
     }
 
     Enemy SelectEnemy(System.Func<float, float, bool> comparitor, float startingValue)
     {
         float cached = startingValue;
-        Enemy selection = null;
+        Enemy selection = blackHole;
         if (enemies.Count > 0)
         {
             foreach (var enemy in enemies)
