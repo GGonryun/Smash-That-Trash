@@ -6,6 +6,7 @@ public enum Targetting { Closest, Farthest, First, Last, Random }
 
 public class SpellSpawner : MonoBehaviour
 {
+    public TargettingEventHandler TargetChange;
     [SerializeField] SpellFactory factory;
     [SerializeField] Targetting targetting = Targetting.Closest;
     List<Spell> spells;
@@ -28,25 +29,32 @@ public class SpellSpawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            targetting = Targetting.Closest;
+             ChangeTargettingMode(Targetting.Closest);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            targetting = Targetting.Farthest;
+             ChangeTargettingMode(Targetting.Farthest);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            targetting = Targetting.First;
+            ChangeTargettingMode(Targetting.First);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            targetting = Targetting.Last;
+             ChangeTargettingMode(Targetting.Last);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            targetting = Targetting.Random;
+            ChangeTargettingMode(Targetting.Random);
         }
     }
+
+    void ChangeTargettingMode(Targetting targettingMode)
+    {
+        targetting = targettingMode;
+        TargetChange?.Invoke(this, new DataEventArgs<Targetting>(targettingMode));
+    }
+
     void SpawnSpell(object sender, DataEventArgs<Letter> e)
     {
         Spell spell = factory.Get();

@@ -29,18 +29,6 @@ public class GameManager : Singleton<GameManager>
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            Initialize();
-        }
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            EndGame();
-        }
-    }
-
     public void EndGame()
     {
         waveNumber = 0;

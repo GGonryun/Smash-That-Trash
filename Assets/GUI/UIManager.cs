@@ -8,7 +8,7 @@ public class UIManager : Singleton<UIManager>
 {
     [SerializeField] TextMeshProUGUI WaveNumber;
     [SerializeField] TextMeshProUGUI Health;
-    [SerializeField] TextMeshProUGUI WordsBox;
+    [SerializeField] TextMeshProUGUI TargettingMode;
     [SerializeField] Canvas GameOverScreen;
     [SerializeField] Canvas GameScreen;
     [SerializeField] Player player;
@@ -20,6 +20,7 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.GameOver += DisplayGameOverScreen;
         GameManager.Instance.InitializeGame += DisplayGameScreen;
         player.HealthTracker += UpdateHealth;
+        player.Spawner.TargetChange += UpdateTargettingMode;
     }
 
     void OnDisable()
@@ -28,7 +29,7 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.GameOver -= DisplayGameOverScreen;
         GameManager.Instance.InitializeGame -= DisplayGameScreen;
         player.HealthTracker -= UpdateHealth;
-
+        player.Spawner.TargetChange -= UpdateTargettingMode;
     }
 
     private void DisplayGameScreen(object sender, DataEventArgs<int> e)
@@ -55,4 +56,8 @@ public class UIManager : Singleton<UIManager>
         Health.text = e.Data.ToString();
     }
 
+    void UpdateTargettingMode(object sender, DataEventArgs<Targetting> e)
+    {
+        TargettingMode.text = e.Data.ToString();
+    }
 }

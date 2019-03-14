@@ -11,3 +11,5 @@ public delegate void LetterEventHandler(object sender, DataEventArgs<Letter> e);
 public delegate void IntEventHandler(object sender, DataEventArgs<int> e);
 
 public delegate void EntriesEventHandler(object sender, DataEventArgs<Entries> e);
+
+public delegate void TargettingEventHandler(object sender, DataEventArgs<Targetting> e);

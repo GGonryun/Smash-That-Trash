@@ -9,6 +9,7 @@ public class Player : Damageable, ITargettable
     public bool IsActive => gameObject.activeInHierarchy;
     [SerializeField] int startingHealth = 5;
     SpellSpawner spawner;
+    public SpellSpawner Spawner { get => spawner; }
 
     void Awake()
     {
