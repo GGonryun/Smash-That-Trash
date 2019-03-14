@@ -53,7 +53,9 @@ Use the space key to summon a new word!
 Use the number keys 1-3 to select targeting modes.
 
 ### Known Bugs:
-View the issues tab :)
+[View The Issue's Tab :)](https://github.com/GGonryun/Smash-That-Trash/issues)
+
+
 ![Game Play Screen Shot](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image6.png?raw=true)
 ### What’s Next?
 ##### Player selected dictionaries:
