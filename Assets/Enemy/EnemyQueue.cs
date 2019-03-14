@@ -80,7 +80,7 @@ public class EnemyQueue : Singleton<EnemyQueue>
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void OnEnable()
+    private void Start()
     {
         EnemySpawner.Instance.EnemySpawned += Add;
     }

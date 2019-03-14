@@ -7,9 +7,11 @@ public class DefinitionDisplay : MonoBehaviour
 {
     public TextMeshProUGUI definition;
     public TextMeshProUGUI score;
+    public TextMeshProUGUI word;
 
-    public void Display(string definition, string score)
+    public void Display(string word, string definition, string score)
     {
+        this.word.text = word;
         this.definition.text = definition;
         this.score.text = score;
     }

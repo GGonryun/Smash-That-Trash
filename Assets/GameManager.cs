@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] float difficulty = .05f;
     [SerializeField] Enemy blackHole;
     [SerializeField] Entries entries;
+    [SerializeField] int startingWaveCount;
     public int waveNumber = 0;
     public int WaveNumber { get => waveNumber; }
     WordDictionary dictionary;
@@ -56,7 +57,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnEnemies()
     {
-        float waveCount = 3;
+        float waveCount = startingWaveCount;
         while(true)
         {
             WaveSpawned?.Invoke(this, new DataEventArgs<int>(waveNumber));

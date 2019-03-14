@@ -24,6 +24,6 @@ public class EntryButton : MonoBehaviour
 
     public void Display()
     {
-        displayDefinition.Display(definition, score);
+        displayDefinition.Display(wordDisplay.text, definition, score);
     }
 }

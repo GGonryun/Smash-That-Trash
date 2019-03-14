@@ -15,7 +15,7 @@ public class SpellSpawner : MonoBehaviour
     {
         spells = new List<Spell>();
     }
-    void OnEnable()
+    void Start()
     {
         LetterReader.Instance.CorrectLetterPressed += SpawnSpell;
     }

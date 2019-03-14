@@ -6,6 +6,7 @@ public class EntriesDisplay : MonoBehaviour
 {
     public DefinitionDisplay display;
     public EntriesFactory factory;
+    public TMPro.TextMeshProUGUI accuracy;
     public Transform folder;
     List<EntryButton> buttons;
 
@@ -16,6 +17,7 @@ public class EntriesDisplay : MonoBehaviour
 
     public void Initialize(Entries entries)
     {
+        accuracy.text = $"{entries.Accuracy()*100f:F2}%";
         foreach(var entry in entries)
         {
             EntryButton entryDisplay = factory.Get();
