@@ -1,10 +1,11 @@
 ## Smash That Trash!
-
+![Game Screen](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image4.png?raw=true)
 ### Github Instructions: 
 Download the project => Open the Executable folder and run the Techlaturge.exe file, you may also build it through Unity3D if you wish.
 
 ### Brief Description: 
 In ‘Smash That Trash!’ the player must quickly clean up the incoming garbage that’s washed up ashore. Players must type the words that appear above the recycling bin as quickly as possible. Players can modify the dictionary to learn any specific vocabulary words. The Project was built in Unity3D using version 2018.3.8f1
+
 
 ### Layouts: 
 The entire game was built in the sample scene, we use a UIManager to alternate between the Game Start, Game, and GameOver screens. The various GUIs will be populated when their corresponding event is triggered. Game screen will be displayed when the game begins, Game Over will be displayed when the player runs out of health, and Game Start is only displayed when first opening the game.
@@ -17,6 +18,7 @@ The Game screen will show the current wave number, health points remaining, and 
 
 #### Game Over Screen:
 This screen will display all the words you scored on the left hand side, along with all the score and definition on the right.
+![GameOver](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image5.png?raw=true)
 
 ### Assets: 
 Recycling Bin - Player (Windows)
@@ -36,6 +38,7 @@ Players can freely switch targeting modes, they may select Closest, Furthest, an
 
 ### How to Win: 
 Players cannot win the game, the game gets progressively more difficult as time goes on, the game ends when a player runs out of health.
+![How To Play](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image1.png?raw=true)
 
 ### How To Play:
 Use the letter keys A-Z to type out the words above the character.
@@ -46,7 +49,7 @@ Use the number keys 1-3 to select targeting modes.
 
 ### Known Bugs:
 View the issues tab :)
-
+![Game Play Screen Shot](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image6.png?raw=true)
 ### What’s Next?
 ##### Player selected dictionaries:
 I would have prefered to allow players to select their own words, this way they can study all sorts of subjects.
