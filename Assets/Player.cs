@@ -6,10 +6,10 @@ public class Player : Damageable, ITargettable
 {
     public Vector3 Location { get => transform.position; }
     public bool IsActive => gameObject.activeInHierarchy;
-
+    [SerializeField] int startingHealth = 5 ;
     void Awake()
     {
-        BaseHealth = CurrentHealth = 1;
+        BaseHealth = CurrentHealth = startingHealth;
     }
 
     protected override void Destroy()
