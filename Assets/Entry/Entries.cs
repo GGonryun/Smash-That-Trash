@@ -21,9 +21,9 @@ public class Entries : MonoBehaviour
         GameManager.Instance.WordCompleted -= AddEntry;
     }
 
-    void AddEntry(object sender, EntryEventArgs e)
+    void AddEntry(object sender, DataEventArgs<Entry> e)
     {
-        entries.Add(e.Entry);
+        entries.Add(e.Data);
     }
 
     public float Accuracy()

@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
 
     public WordEventHandler WordCreated;
-    public ScoreEventHandler WordCompleted;
+    public EntryEventHandler WordCompleted;
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
     [SerializeField] float spawnSpeed = 3f;
@@ -84,7 +84,7 @@ public class GameManager : Singleton<GameManager>
         Keyboard.Instance.Terminate -= CompleteWord;
     }
 
-    void CompleteWord(object sender, KeyPressedEventArgs e)
+    void CompleteWord(object sender, DataEventArgs<KeyCode> e)
     {
         SubmitWord();
         CreateWord();
@@ -94,12 +94,12 @@ public class GameManager : Singleton<GameManager>
     {
         KeyValuePair<string, string> currentWord = WordBuilder.Instance.ClearWord();
         Entry entry = new Entry(currentWord.Key, currentWord.Value, LetterReader.Instance.Score);
-        WordCompleted?.Invoke(this, new EntryEventArgs(entry));
+        WordCompleted?.Invoke(this, new DataEventArgs<Entry>(entry));
     }
 
     void CreateWord()
     {
         Word word = WordBuilder.Instance.CreateWord(dictionary.GetRandom());
-        WordCreated?.Invoke(this, new WordEventArgs(word));
+        WordCreated?.Invoke(this, new DataEventArgs<Word>(word));
     }
 }

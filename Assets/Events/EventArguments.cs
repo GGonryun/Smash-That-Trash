@@ -1,46 +1,9 @@
-﻿
-public class KeyPressedEventArgs : System.EventArgs
+﻿public class DataEventArgs<T> : System.EventArgs
 {
-    public UnityEngine.KeyCode PressedKey { get; private set; }
-    public KeyPressedEventArgs(UnityEngine.KeyCode pressedKey)
-    {
-        this.PressedKey = pressedKey;
-    }
-}
+    public T Data { get; protected set; }
 
-public class WordEventArgs : System.EventArgs
-{
-    public Word Word { get; private set; }
-    public WordEventArgs(Word word)
+    public DataEventArgs(T data)
     {
-        this.Word = word;
-    }
-}
-
-public class EntryEventArgs : System.EventArgs
-{
-    public Entry Entry { get; private set; }
-    public EntryEventArgs(Entry entry)
-    {
-        this.Entry = entry;
-    }
-}
-
-
-public class EnemyEventArgs : System.EventArgs
-{
-    public Enemy Enemy { get; private set; }
-    public EnemyEventArgs(Enemy enemy)
-    {
-        this.Enemy = enemy;
-    }
-}
-
-public class LetterEventArgs : System.EventArgs
-{
-    public Letter Letter { get; private set; }
-    public LetterEventArgs(Letter letter)
-    {
-        this.Letter = letter;
+        Data = data;
     }
 }

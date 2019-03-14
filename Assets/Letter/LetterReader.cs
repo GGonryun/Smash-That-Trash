@@ -21,7 +21,7 @@ public class LetterReader : Singleton<LetterReader>
         GameManager.Instance.WordCreated -= RefreshWord;
     }
 
-    void CheckLetter(object sender, KeyPressedEventArgs e)
+    void CheckLetter(object sender, DataEventArgs<KeyCode> e)
     {
         if(index >= word.Length)
         {
@@ -29,11 +29,11 @@ public class LetterReader : Singleton<LetterReader>
         }
 
         Letter letter = word[index];
-        if (Letter.AreEqual(letter, e.PressedKey.ToString().ToLower()[0]))
+        if (Letter.AreEqual(letter, e.Data.ToString().ToLower()[0]))
         {
             Score++;
             letter.SetType(Status.Correct);
-            CorrectLetterPressed?.Invoke(this, new LetterEventArgs(letter));
+            CorrectLetterPressed?.Invoke(this, new DataEventArgs<Letter>(letter));
         }
         else
         {
@@ -43,9 +43,9 @@ public class LetterReader : Singleton<LetterReader>
         index++;
     }
 
-    void RefreshWord(object sender, WordEventArgs e)
+    void RefreshWord(object sender, DataEventArgs<Word> e)
     {
-        RefreshWord(e.Word);
+        RefreshWord(e.Data);
     }
 
     private void RefreshWord(Word word)

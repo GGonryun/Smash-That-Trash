@@ -1,9 +1,11 @@
-﻿public delegate void KeyPressedEventHandler(object sender, KeyPressedEventArgs e);
+﻿public delegate void KeyPressedEventHandler(object sender, DataEventArgs<UnityEngine.KeyCode> e);
 
-public delegate void WordEventHandler(object sender, WordEventArgs e);
+public delegate void WordEventHandler(object sender, DataEventArgs<Word> e);
 
-public delegate void ScoreEventHandler(object sender, EntryEventArgs e);
+public delegate void EntryEventHandler(object sender, DataEventArgs<Entry> e);
 
-public delegate void EnemyEventHandler(object sender, EnemyEventArgs e);
+public delegate void EnemyEventHandler(object sender, DataEventArgs<Enemy> e);
 
-public delegate void LetterEventHandler(object sender, LetterEventArgs e);
+public delegate void LetterEventHandler(object sender, DataEventArgs<Letter> e);
+
+public delegate void IntEventHandler(object sender, DataEventArgs<int> e);
