@@ -30,11 +30,13 @@ public class Player : Damageable, ITargettable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<Enemy>() != null)
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
         {
             IDamageable self = this as IDamageable;
             self.Damage(1);
             HealthTracker?.Invoke(this, new DataEventArgs<int>(CurrentHealth));
+            enemy.Destroy();
         }
     }
 }

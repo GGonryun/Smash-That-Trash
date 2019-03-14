@@ -19,7 +19,13 @@ public class PlayOnDisable : MonoBehaviour
 
     public void PlaySound(object sender, DataEventArgs<Enemy> e)
     {
-        AudioManager.Instance.PlaySound(sounds[e.Data.FactoryIndex]);
+        try
+        {
+            AudioManager.Instance.PlaySound(sounds[e.Data.FactoryIndex]);
+        }
+        catch
+        {
+        }
     }
 
 }

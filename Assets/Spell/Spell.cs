@@ -29,6 +29,7 @@ public class Spell : Projectile, IReclaimable
     public void Reclaim()
     {
         Target = null;
+        AudioManager.Instance.PlaySound("Impact");
         spawner.Reclaim(this);
     }
 

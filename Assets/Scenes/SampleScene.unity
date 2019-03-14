@@ -4385,6 +4385,11 @@ PrefabInstance:
       propertyPath: entries
       value: 
       objectReference: {fileID: 1363028236}
+    - target: {fileID: 2947706667715695152, guid: f7aad6eb6ac7bd54c89de6f0e4e02755,
+        type: 3}
+      propertyPath: difficulty
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7aad6eb6ac7bd54c89de6f0e4e02755, type: 3}
 --- !u!1001 &4232661430785614405
@@ -4459,6 +4464,113 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: fa8ed1175f4ae3a4282dc44866dad619,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: c576008735224f14ab858a77f0086d3b,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: c4b93d3092d43304cb4e522ee844ba80,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 111bd2ab74966924db2b8a829a07e299,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0508b549588bc5b469147ea6fad779b8,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 09df4a1c2a1539a45a1aa53a1371db1c,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f7095c140c3e1d44a9efbc50e7c2378,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a42bfe4430cd5a4497ecf11b73d8e67,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f2f002f30b41914f9ca9614d25ad74a,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: bdc1daf232425ec4897d45daf7df51fb,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 918bb90cf9ce2bd46b7db32f2c09fa88,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f632017724273c0488b01b88b1b83db7,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e03407fbc6d4284f86e84beb36de1ee,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b8e17f237179b1478f79b7301e0d257,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 003275030a32f9044b9c35f57a9a7bfe,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: f9188cb62894ed64a99c7f32442f751c,
+        type: 2}
+    - target: {fileID: 4232661431223233519, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
+        type: 3}
+      propertyPath: enemyFactories.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: b356ed61c191c934783ffc2e11098b6f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777, type: 3}
 --- !u!1001 &6366603123926936136
@@ -4569,21 +4681,17 @@ MonoBehaviour:
   - Coffee Mug
   - Cola Bottle
   - Glass Jar
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Large Box
+  - Laundry Detergent
+  - Milk Jug
+  - Newspaper
+  - Paper Bag
+  - Pizza Box
+  - Soda Can
+  - Spray Paint
+  - Styrofoam Cup
+  - Tuna Can
+  - Water Bottle
 --- !u!1001 &8855986237622070426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5124,7 +5232,7 @@ PrefabInstance:
     - target: {fileID: 8610996340814883995, guid: 22680d0491e1e434bbf0b54513a93cb8,
         type: 3}
       propertyPath: sounds.Array.data[16].volume
-      value: 0.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8610996340814883995, guid: 22680d0491e1e434bbf0b54513a93cb8,
         type: 3}
@@ -5144,7 +5252,7 @@ PrefabInstance:
     - target: {fileID: 8610996340814883995, guid: 22680d0491e1e434bbf0b54513a93cb8,
         type: 3}
       propertyPath: sounds.Array.data[17].volume
-      value: 0.58
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 8610996340814883995, guid: 22680d0491e1e434bbf0b54513a93cb8,
         type: 3}

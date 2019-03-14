@@ -31,19 +31,21 @@ public class GameManager : Singleton<GameManager>
 
     public void EndGame()
     {
+        GameOver?.Invoke(this, new DataEventArgs<Entries>(entries));
+
         waveNumber = 0;
         Keyboard.Instance.Disable();
         StopAllCoroutines();
         EnemySpawner.Instance.Clear();
         WordBuilder.Instance.ClearWord();
 
-        GameOver?.Invoke(this, new DataEventArgs<Entries>(entries));
     }
 
     public void Initialize()
     {
-        waveNumber++;
         InitializeGame?.Invoke(this, new DataEventArgs<int>(0));
+
+        waveNumber++;
         entries.Clear();
         Keyboard.Instance.Enable();
         CreateWord();
@@ -58,7 +60,6 @@ public class GameManager : Singleton<GameManager>
         while(true)
         {
             WaveSpawned?.Invoke(this, new DataEventArgs<int>(waveNumber));
-            Debug.Log(Mathf.FloorToInt(waveCount));
             for(int i = 0; i < Mathf.FloorToInt(waveCount); i++)
             {
                 yield return new WaitForSeconds(.15f);

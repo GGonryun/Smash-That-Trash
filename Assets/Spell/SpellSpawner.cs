@@ -54,6 +54,7 @@ public class SpellSpawner : MonoBehaviour
         spell.Initialize(this, e.Data.transform.position);
         spell.Target = SelectTarget();
         spell.gameObject.SetActive(true);
+        AudioManager.Instance.PlaySound("Fireball");
     }
     public Enemy SelectTarget()
     {
