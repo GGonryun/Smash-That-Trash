@@ -6,6 +6,11 @@ Download the project => Open the Executable folder and run the Techlaturge.exe f
 ### Brief Description: 
 In ‘Smash That Trash!’ the player must quickly clean up the incoming garbage that’s washed up ashore. Players must type the words that appear above the recycling bin as quickly as possible. Players can modify the dictionary to learn any specific vocabulary words. The Project was built in Unity3D using version 2018.3.8f1
 
+### Learning Objectives:
+- Teach the player how to type faster.
+- Improve letter and word recognition.
+- Learn vocabulary words and their definitions.
+- Improve typing accuracy.
 
 ### Layouts: 
 The entire game was built in the sample scene, we use a UIManager to alternate between the Game Start, Game, and GameOver screens. The various GUIs will be populated when their corresponding event is triggered. Game screen will be displayed when the game begins, Game Over will be displayed when the player runs out of health, and Game Start is only displayed when first opening the game.
