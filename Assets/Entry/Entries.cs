@@ -24,7 +24,6 @@ public class Entries : MonoBehaviour
     void AddEntry(object sender, EntryEventArgs e)
     {
         entries.Add(e.Entry);
-        Debug.Log($"Word: {e.Entry.Word}, Definition: {e.Entry.Definition}, Score: {e.Entry.Score}");
     }
 
     public float Accuracy()

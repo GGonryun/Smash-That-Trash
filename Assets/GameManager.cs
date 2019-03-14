@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] float spawnSpeed = 3f;
     [SerializeField] float difficulty = .05f;
     [SerializeField] Enemy blackHole;
+    public int waveNumber = 0;
+    public int WaveNumber { get => waveNumber; }
     WordDictionary dictionary;
     Player player;
 
@@ -29,29 +31,47 @@ public class GameManager : Singleton<GameManager>
         {
             InitializeGame();
         }
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            EndGame();
+        }
     }
 
-    void InitializeGame()
+    public void EndGame()
     {
+        waveNumber = 0;
+        Keyboard.Instance.Disable();
         StopAllCoroutines();
+        EnemySpawner.Instance.Clear();
         WordBuilder.Instance.ClearWord();
+    }
+
+    public void InitializeGame()
+    {
+        waveNumber++;
+        Keyboard.Instance.Enable();
         CreateWord();
         player.Initialize();
-        EnemySpawner.Instance.Clear();
         StartCoroutine(SpawnEnemies());
         blackHole.Initialize(new Vector2(0, -40f), -1);
     }
 
     private IEnumerator SpawnEnemies()
     {
+        float waveCount = 3;
         while(true)
         {
-            EnemySpawner.Instance.Spawn();
+            Debug.Log(Mathf.FloorToInt(waveCount));
+            for(int i = 0; i < Mathf.FloorToInt(waveCount); i++)
+            {
+                yield return new WaitForSeconds(.15f);
+                EnemySpawner.Instance.Spawn();
+            }
             yield return new WaitForSeconds(spawnSpeed);
-            spawnSpeed = Mathf.Clamp(spawnSpeed - difficulty, 0.25f, 10f);
+            spawnSpeed = UnityEngine.Random.Range(spawnSpeed * .945f, spawnSpeed * 1.045f);
+            waveCount *= (1 + difficulty);
+            waveNumber++;
         }
-
-
     }
 
     void OnEnable()

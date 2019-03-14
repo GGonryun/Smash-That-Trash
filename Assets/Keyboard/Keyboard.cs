@@ -8,15 +8,21 @@ public class Keyboard : Singleton<Keyboard>
 
     [SerializeField] List<KeyCode> keys = new List<KeyCode>();
     [SerializeField] KeyCode terminationKey = KeyCode.Space;
+    new bool enabled = false;
+    public KeyPressedEventHandler KeyPressed;
+    public KeyPressedEventHandler Terminate;
+    public void Disable() => enabled = false;
+    public void Enable() => enabled = true;
+
 
     void Update()
     {
-        InputLetter();
-        TerminateLetter();
+        if (enabled)
+        {
+            InputLetter();
+            TerminateLetter();
+        }
     }
-
-    public KeyPressedEventHandler KeyPressed;
-    public KeyPressedEventHandler Terminate;
 
     void OnTerminate(KeyPressedEventArgs e)
     {

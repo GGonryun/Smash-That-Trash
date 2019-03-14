@@ -188,8 +188,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47809709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 5.16, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 5.4, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 3}
   m_Children:
   - {fileID: 1694037630}
   - {fileID: 697245410}
@@ -513,11 +513,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701bdd62a63ffb64993186981a7d08e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 0.01
-  maximumWords: 500
-  spawnSpeed: 3
-  difficulty: 0.04
+  frequency: 0.025
+  maximumWords: 1000
+  spawnSpeed: 15
+  difficulty: 0.05
   blackHole: {fileID: 611562685}
+  waveNumber: 0
 --- !u!4 &664574791
 Transform:
   m_ObjectHideFlags: 0
@@ -925,17 +926,17 @@ PrefabInstance:
     - target: {fileID: 4232661431223233518, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7497976
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4232661431223233518, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3719409
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4232661431223233518, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.18775804
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4232661431223233518, guid: ee6cc0bcfdbc52d42a94e4d05f4ab777,
         type: 3}
@@ -995,6 +996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366603123430383614, guid: a263646295faf12458106097c5bb8c71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6366603123430383600, guid: a263646295faf12458106097c5bb8c71,
         type: 3}

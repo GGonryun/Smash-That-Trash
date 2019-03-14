@@ -21,7 +21,7 @@ public class Player : Damageable, ITargettable
 
     public override void Destroy()
     {
-        Debug.Log("Dead boi");
+        GameManager.Instance.EndGame();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
