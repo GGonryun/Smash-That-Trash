@@ -22,8 +22,8 @@ The Game Start screen describes the buttons required to play the game, along wit
 The Game screen will show the current wave number, health points remaining, and the user’s current targeting mode.
 
 #### Game Over Screen:
-This screen will display all the words you scored on the left hand side, along with all the score and definition on the right.
 ![GameOver](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image5.png?raw=true)
+This screen will display all the words you scored on the left hand side, along with all the score and definition on the right.
 
 ### Assets: 
 Recycling Bin - Player (Windows)
@@ -43,9 +43,9 @@ Players can freely switch targeting modes, they may select Closest, Furthest, an
 
 ### How to Win: 
 Players cannot win the game, the game gets progressively more difficult as time goes on, the game ends when a player runs out of health.
-![How To Play](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image1.png?raw=true)
 
 ### How To Play:
+![How To Play](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image1.png?raw=true)
 Use the letter keys A-Z to type out the words above the character.
 
 Use the space key to summon a new word!
@@ -56,7 +56,6 @@ Use the number keys 1-3 to select targeting modes.
 [View The Issue's Tab :)](https://github.com/GGonryun/Smash-That-Trash/issues)
 
 
-![Game Play Screen Shot](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image6.png?raw=true)
 ### What’s Next?
 ##### Player selected dictionaries:
 I would have prefered to allow players to select their own words, this way they can study all sorts of subjects.
@@ -71,3 +70,4 @@ The UI is currently lacking, I would have prefered a much more robust and well d
 ##### Improved End Game Statistics:
 Players should be able to review specific words more closely. This way they can analyze which letter combinations cause them the most trouble.
 
+![Game Play Screen Shot](https://media.githubusercontent.com/media/GGonryun/Smash-That-Trash/master/Images/Image6.png?raw=true)
