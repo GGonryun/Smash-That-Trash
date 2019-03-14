@@ -8,6 +8,7 @@ public class WordBuilder : Singleton<WordBuilder>
     private KeyValuePair<string, string> currentWord;
     private Word word;
 
+
     public Word CreateWord(KeyValuePair<string, string> pair)
     {
         currentWord = pair;

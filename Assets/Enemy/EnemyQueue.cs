@@ -61,7 +61,6 @@ public class EnemyQueue : Singleton<EnemyQueue>
         }
         return selection;
     }
-    
 
     public void Remove(Enemy enemy)
     {

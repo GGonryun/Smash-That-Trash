@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,25 +10,46 @@ public class GameManager : Singleton<GameManager>
     public ScoreEventHandler WordCompleted;
     [SerializeField] float frequency = .01f;
     [SerializeField] int maximumWords = 100;
+    [SerializeField] float spawnSpeed = 3f;
+    [SerializeField] float difficulty = .05f;
     WordDictionary dictionary;
+    Player player;
 
     protected override void Awake()
     {
         base.Awake();
         dictionary = new WordDictionary(frequency, maximumWords);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Backspace))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
-            EnemySpawner.Instance.Spawn();
+            InitializeGame();
         }
     }
 
-    void Start()
+    void InitializeGame()
     {
+        StopAllCoroutines();
+        WordBuilder.Instance.ClearWord();
         CreateWord();
+        player.Initialize();
+        EnemySpawner.Instance.Clear();
+        StartCoroutine(SpawnEnemies());
+    }
+
+    private IEnumerator SpawnEnemies()
+    {
+        while(true)
+        {
+            EnemySpawner.Instance.Spawn();
+            yield return new WaitForSeconds(spawnSpeed);
+            spawnSpeed = Mathf.Clamp(spawnSpeed - difficulty, 0.1f, 10f);
+        }
+
+
     }
 
     void OnEnable()

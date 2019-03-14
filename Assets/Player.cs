@@ -7,16 +7,22 @@ public class Player : Damageable, ITargettable
     public Vector3 Location { get => transform.position; }
     public bool IsActive => gameObject.activeInHierarchy;
     [SerializeField] int startingHealth = 5 ;
+    SpellSpawner spawner;
     void Awake()
     {
-        BaseHealth = CurrentHealth = startingHealth;
+        spawner = GetComponent<SpellSpawner>();
     }
 
-    protected override void Destroy()
+    public void Initialize()
+    {
+        BaseHealth = CurrentHealth = startingHealth;
+        spawner.Clear();
+    }
+
+    public override void Destroy()
     {
         Debug.Log("Dead boi");
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

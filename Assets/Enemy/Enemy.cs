@@ -20,7 +20,7 @@ public class Enemy : Damageable, ITargetter<ITargettable>, ITargettable
         gameObject.SetActive(true);
     }
 
-    protected override void Destroy() => EnemySpawner.Instance.Despawn(this, factoryIndex);
+    public override void Destroy() => EnemySpawner.Instance.Despawn(this, factoryIndex);
 
 
 

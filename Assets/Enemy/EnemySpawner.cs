@@ -13,10 +13,13 @@ public class EnemySpawner : Singleton<EnemySpawner>
     [SerializeField] [Range(0, 20f)] float horizontalSpawnRange;
     [SerializeField] [Range(0, 20f)] float verticalSpawnRange;
 
+    List<Enemy> enemies;
+
     protected override void Awake()
     {
         base.Awake();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<ITargettable>();
+        enemies = new List<Enemy>();
     }
 
     public void Spawn()
@@ -32,6 +35,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
         Vector3 position = SelectRandomPos();
 
         enemy.Initialize(position, i);
+        enemies.Add(enemy);
         OnEnemySpawned(new EnemyEventArgs(enemy));
     }
 
@@ -40,6 +44,15 @@ public class EnemySpawner : Singleton<EnemySpawner>
         enemyFactories[factoryIndex].Recycle(enemy);
         EnemyQueue.Instance.Remove(enemy);
         OnEnemyDespawned(new EnemyEventArgs(enemy));
+    }
+
+    public void Clear()
+    {
+        foreach(var enemy in enemies)
+        {
+            enemy.Destroy();
+        }
+        enemies.Clear();
     }
 
     Vector2 SelectRandomPos()

@@ -20,5 +20,5 @@ public abstract class Damageable : MonoBehaviour, IDamageable
         }
     }
 
-    protected abstract void Destroy();
+    public abstract void Destroy();
 }
